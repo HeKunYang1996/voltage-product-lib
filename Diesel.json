@@ -15,13 +15,6 @@
     ],
     "description": "One Meter connection is required."
   },
-  "defaultDisplayMeasureIds": [
-    1,
-    13,
-    14,
-    15,
-    18
-  ],
   "P": [
     {
       "id": 1,
@@ -100,7 +93,10 @@
       "name": "Diesel Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Diesel Power."
+      "description": "Measurement for Diesel Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 2,
@@ -184,21 +180,30 @@
       "name": "Diesel Oil",
       "unit": "%",
       "type": "number",
-      "description": "Measurement for Diesel Oil."
+      "description": "Measurement for Diesel Oil.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 14,
       "name": "Diesel Temperature",
       "unit": "℃",
       "type": "number",
-      "description": "Measurement for Diesel Temperature."
+      "description": "Measurement for Diesel Temperature.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 15,
       "name": "Start Stop Status",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Start Stop Status."
+      "description": "Measurement for Start Stop Status.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 16,
@@ -219,7 +224,10 @@
       "name": "Diesel Energy Today",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Diesel Energy Today."
+      "description": "Measurement for Diesel Energy Today.",
+      "attr": {
+        "isDisplay": "true"
+      }
     }
   ],
   "A": [

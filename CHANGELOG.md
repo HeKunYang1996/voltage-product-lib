@@ -2,6 +2,15 @@
 
 Version identifiers use the release date in `YYYY-MM-DD` format. New entries are added at the top and describe changes relative to the preceding recorded version.
 
+## 2026-09-14
+
+### Display-point metadata
+
+- Removed product-level `defaultDisplayMeasureIds` arrays from all 13 product definitions.
+- Added `attr.isDisplay: "true"` directly to the Measure points that were previously selected by those arrays.
+- Kept the selected Measure sets unchanged; only the representation moved from product-level references to point-local metadata.
+- Updated the product contract and validation guidance in `README.md`.
+
 ## 2026-09-08
 
 ### Change statistics
