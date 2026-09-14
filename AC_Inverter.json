@@ -22,13 +22,6 @@
     ],
     "description": "One Meter connection is required. PV Group connections are optional and remain subject to peer rules."
   },
-  "defaultDisplayMeasureIds": [
-    1,
-    2,
-    16,
-    17,
-    18
-  ],
   "P": [
     {
       "id": 1,
@@ -93,14 +86,20 @@
       "name": "Total Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Total Power."
+      "description": "Measurement for Total Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 2,
       "name": "DC Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for DC Power."
+      "description": "Measurement for DC Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 3,
@@ -198,21 +197,30 @@
       "name": "Efficiency",
       "unit": "%",
       "type": "number",
-      "description": "Measurement for Efficiency."
+      "description": "Measurement for Efficiency.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 17,
       "name": "Energy Today",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Energy Today."
+      "description": "Measurement for Energy Today.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 18,
       "name": "Start Stop Status",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Start Stop Status."
+      "description": "Measurement for Start Stop Status.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 19,

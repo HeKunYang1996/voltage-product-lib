@@ -22,13 +22,6 @@
     ],
     "description": "One Meter connection is required. Battery connections are optional and remain subject to peer rules."
   },
-  "defaultDisplayMeasureIds": [
-    1,
-    2,
-    6,
-    14,
-    16
-  ],
   "P": [
     {
       "id": 1,
@@ -79,14 +72,20 @@
       "name": "Total Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Total Power."
+      "description": "Measurement for Total Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 2,
       "name": "DC Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for DC Power."
+      "description": "Measurement for DC Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 3,
@@ -114,7 +113,10 @@
       "name": "DC Voltage",
       "unit": "V",
       "type": "number",
-      "description": "Measurement for DC Voltage."
+      "description": "Measurement for DC Voltage.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 7,
@@ -170,7 +172,10 @@
       "name": "Start Stop Status",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Start Stop Status."
+      "description": "Measurement for Start Stop Status.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 15,
@@ -184,7 +189,10 @@
       "name": "Direction",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Direction."
+      "description": "Measurement for Direction.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 17,

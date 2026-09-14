@@ -16,13 +16,6 @@
     ],
     "description": "Connect to exactly one Hybrid Inverter or AC Inverter across this group."
   },
-  "defaultDisplayMeasureIds": [
-    7,
-    5,
-    15,
-    8,
-    6
-  ],
   "P": [
     {
       "id": 1,
@@ -122,28 +115,40 @@
       "name": "Energy Today",
       "unit": "kwh",
       "type": "number",
-      "description": "Measurement for Energy Today."
+      "description": "Measurement for Energy Today.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 6,
       "name": "Start Stop Status",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Start Stop Status."
+      "description": "Measurement for Start Stop Status.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 7,
       "name": "PV Power",
       "unit": "kw",
       "type": "number",
-      "description": "Measurement for PV Power."
+      "description": "Measurement for PV Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 8,
       "name": "PV Voltage",
       "unit": "V",
       "type": "number",
-      "description": "Measurement for PV Voltage."
+      "description": "Measurement for PV Voltage.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 9,
@@ -192,7 +197,10 @@
       "name": "Energy Total",
       "unit": "kwh",
       "type": "number",
-      "description": "Measurement for Energy Total."
+      "description": "Measurement for Energy Total.",
+      "attr": {
+        "isDisplay": "true"
+      }
     }
   ],
   "A": [

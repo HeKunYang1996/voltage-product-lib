@@ -16,13 +16,6 @@
     ],
     "description": "One Meter connection is required."
   },
-  "defaultDisplayMeasureIds": [
-    1,
-    2,
-    3,
-    14,
-    18
-  ],
   "P": [
     {
       "id": 1,
@@ -105,20 +98,29 @@
       "name": "Total Active Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Total Active Power."
+      "description": "Measurement for Total Active Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 2,
       "name": "Total Reactive Power",
       "unit": "kvar",
       "type": "number",
-      "description": "Measurement for Total Reactive Power."
+      "description": "Measurement for Total Reactive Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 3,
       "name": "Power Factor",
       "type": "number",
-      "description": "Measurement for Power Factor."
+      "description": "Measurement for Power Factor.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 4,
@@ -195,7 +197,10 @@
       "name": "Total Energy",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Total Energy."
+      "description": "Measurement for Total Energy.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 15,
@@ -223,7 +228,10 @@
       "name": "Current Demand",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Current Demand."
+      "description": "Measurement for Current Demand.",
+      "attr": {
+        "isDisplay": "true"
+      }
     }
   ],
   "A": []

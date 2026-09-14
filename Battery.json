@@ -16,13 +16,6 @@
     ],
     "description": "Connect to exactly one Hybrid Inverter or PCS across this group."
   },
-  "defaultDisplayMeasureIds": [
-    7,
-    1,
-    5,
-    6,
-    11
-  ],
   "P": [
     {
       "id": 1,
@@ -115,7 +108,10 @@
       "name": "Total Voltage",
       "unit": "V",
       "type": "number",
-      "description": "Measurement for Total Voltage."
+      "description": "Measurement for Total Voltage.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 2,
@@ -143,21 +139,30 @@
       "name": "Charge Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Charge Power."
+      "description": "Measurement for Charge Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 6,
       "name": "Discharge Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Discharge Power."
+      "description": "Measurement for Discharge Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 7,
       "name": "SOC",
       "unit": "%",
       "type": "number",
-      "description": "Measurement for SOC."
+      "description": "Measurement for SOC.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 8,
@@ -185,7 +190,10 @@
       "name": "Charge Discharge Status",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Charge Discharge Status."
+      "description": "Measurement for Charge Discharge Status.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 12,

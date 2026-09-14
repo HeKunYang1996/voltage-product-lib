@@ -31,13 +31,13 @@ AC_Inverter 和 PCS 仍用于独立设备；Hybrid_Inverter 以一个实例表�
 | topology.image | 可选图片资源标识 |
 | topology.connections | 产品级连线规则数组 |
 | topology.description | 整体连接说明，用于 tooltip 底部 |
-| defaultDisplayMeasureIds | 平级默认展示 Measure ID 数组，全部引用本产品 M |
+| M[].attr.isDisplay | 可选的默认展示标记；字符串值为 `"true"` 时展示该测点 |
 | P / M / A | 参数、测量及动作定义 |
 
 点位保留 `id/name/unit/type` 和可选 `description/options` 等原有元数据。
 ID 在每个产品的每类点表内唯一；删除的 ID 不复用，协议地址在接入层维护。
 `options` 是枚举说明，不代表后端已实现枚举校验或转换。
-`defaultDisplayMeasureIds` 通常为 3–5 个不重复的 M ID，没有主次之分；Station 只有两个 M，全部展示，不为满足数量添加点位。
+默认展示信息直接放在测点上：需要展示的 M 点位增加 `"attr": { "isDisplay": "true" }`，未配置或值不为 `"true"` 的点位不默认展示。展示顺序遵循 M 数组顺序；如果以后需要独立排序，可在 `attr` 中增加排序元数据。通常每个产品标记 3–5 个 M 点位，没有主次之分；Station 只有两个 M，全部标记，不为满足数量添加点位。
 展示时过滤未映射或不可用点位，不以零值代替缺失值。
 
 ## 四个连接点共享产品规则
@@ -117,17 +117,8 @@ Meter 关联表示业务拓扑，不表示把计量设备当作配电箱的实�
 - 旧 Rust 解析器仍要求部分已删除字段，新文件不能直接替换部署，需先更新解析类型和产品转换逻辑。
 - 旧连接代码采用单侧声明即可连接；新规则要求双方允许并按分组共同计数，需同步实现。
 - PointDef 与云端导入模型需要接收 description；边端转换时应透传，不能继续固定返回 None。
-- defaultDisplayMeasureIds 是平级默认 Measure ID 数组；旧主指标/详情结构不再使用。
+- 默认展示点位改由 `M[].attr.isDisplay` 标记；`defaultDisplayMeasureIds` 与旧主指标/详情结构均不再使用。
 - Battery 的 P/M/A 保持原点位与编号，仅保留此前补充的说明；本轮不改变任何保留产品的 P/M/A。
 - 旧拓扑迁移须明确处理 Distribution_Board 和其 Meter 子组件；不要仅替换产品名称便直接发布。
 - 内嵌产品需要更新依赖并重新构建；外部产品目录需按后端实际加载机制刷新。
 
-## 校验
-
-在产品库目录执行：
-
-```sh
-node scripts/validate_products.cjs
-```
-
-检查 JSON、产品标识、规则数量范围、重复目标、互相允许、点位 ID、描述及 defaultDisplayMeasureIds 引用；并覆盖四个连接点共同计数的示例。

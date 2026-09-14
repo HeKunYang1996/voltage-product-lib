@@ -29,13 +29,6 @@
     ],
     "description": "One Meter connection is required. PV Group and Battery connections are optional and remain subject to peer rules."
   },
-  "defaultDisplayMeasureIds": [
-    1,
-    2,
-    3,
-    6,
-    28
-  ],
   "P": [
     {
       "id": 1,
@@ -107,21 +100,30 @@
       "name": "Inverter AC Output Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Inverter AC Output Power."
+      "description": "Measurement for Inverter AC Output Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 2,
       "name": "PV Input Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for PV Input Power."
+      "description": "Measurement for PV Input Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 3,
       "name": "Battery Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Battery Power."
+      "description": "Measurement for Battery Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 4,
@@ -142,7 +144,10 @@
       "name": "Battery SOC",
       "unit": "%",
       "type": "number",
-      "description": "Measurement for Battery SOC."
+      "description": "Measurement for Battery SOC.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 8,
@@ -212,7 +217,10 @@
       "name": "Start Stop Status",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Start Stop Status."
+      "description": "Measurement for Start Stop Status.",
+      "attr": {
+        "isDisplay": "true"
+      }
     }
   ],
   "A": [

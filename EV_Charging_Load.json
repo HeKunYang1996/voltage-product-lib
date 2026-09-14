@@ -15,13 +15,6 @@
     ],
     "description": "One Meter connection is required."
   },
-  "defaultDisplayMeasureIds": [
-    1,
-    2,
-    3,
-    4,
-    9
-  ],
   "P": [
     {
       "id": 1,
@@ -131,28 +124,40 @@
       "name": "Load Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Load Power."
+      "description": "Measurement for Load Power.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 2,
       "name": "Energy Used",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Energy Used."
+      "description": "Measurement for Energy Used.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 3,
       "name": "Voltage",
       "unit": "V",
       "type": "number",
-      "description": "Measurement for Voltage."
+      "description": "Measurement for Voltage.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 4,
       "name": "Current",
       "unit": "A",
       "type": "number",
-      "description": "Measurement for Current."
+      "description": "Measurement for Current.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 5,
@@ -192,7 +197,10 @@
         "idle",
         "completed"
       ],
-      "description": "Measurement for Charging Status."
+      "description": "Measurement for Charging Status.",
+      "attr": {
+        "isDisplay": "true"
+      }
     }
   ],
   "A": [
