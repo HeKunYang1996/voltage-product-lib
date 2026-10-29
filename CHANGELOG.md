@@ -2,6 +2,15 @@
 
 Version identifiers use the release date in `YYYY-MM-DD` format. New entries are added at the top and describe changes relative to the preceding recorded version.
 
+## 2026-10-29
+
+### Battery connection count
+
+- Removed the Battery-side connection maximum for the combined `Hybrid_Inverter` / `PCS` group (`max: null`).
+- A Battery may connect to multiple PCS devices, multiple Hybrid Inverters, or a mixture of both, with no product-level maximum.
+- Kept the minimum of one connection and all P/M/A point definitions unchanged.
+- Updated the topology description and README examples to match the rule.
+
 ## 2026-09-14
 
 ### Display-point metadata

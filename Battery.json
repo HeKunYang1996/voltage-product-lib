@@ -11,10 +11,10 @@
           "PCS"
         ],
         "min": 1,
-        "max": 1
+        "max": null
       }
     ],
-    "description": "Connect to exactly one Hybrid Inverter or PCS across this group."
+    "description": "Connect to one or more Hybrid Inverters and/or PCS devices across this group, with no product-level maximum."
   },
   "P": [
     {
