@@ -53,10 +53,10 @@ ID 在每个产品的每类点表内唯一；删除的 ID 不复用，协议地�
     {
       "products": ["Hybrid_Inverter", "PCS"],
       "min": 1,
-      "max": 1
+      "max": null
     }
   ],
-  "description": "Connect to exactly one Hybrid Inverter or PCS across this group."
+  "description": "Connect to one or more Hybrid Inverters and/or PCS devices across this group, with no product-level maximum."
 }
 ```
 
@@ -85,7 +85,7 @@ ID 在每个产品的每类点表内唯一；删除的 ID 不复用，协议地�
 
 | 产品 | 对端产品分组 | min | max |
 | --- | --- | --- | --- |
-| Battery | Hybrid_Inverter、PCS 合计 | 1 | 1 |
+| Battery | Hybrid_Inverter、PCS 合计 | 1 | null |
 | PV_Group | Hybrid_Inverter、AC_Inverter 合计 | 1 | 1 |
 | Hybrid_Inverter | PV_Group | 0 | null |
 | Hybrid_Inverter | Battery | 0 | null |
