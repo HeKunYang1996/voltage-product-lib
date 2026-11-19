@@ -144,20 +144,14 @@
       "name": "Voltage",
       "unit": "V",
       "type": "number",
-      "description": "Measurement for Voltage.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Voltage."
     },
     {
       "id": 4,
       "name": "Current",
       "unit": "A",
       "type": "number",
-      "description": "Measurement for Current.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Current."
     },
     {
       "id": 5,
@@ -191,11 +185,11 @@
       "id": 9,
       "name": "Charging Status",
       "unit": "",
-      "type": "string",
-      "options": [
-        "charging",
-        "idle",
-        "completed"
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Charging" },
+        { "key": "2", "label": "Idle" },
+        { "key": "3", "label": "Completed" }
       ],
       "description": "Measurement for Charging Status.",
       "attr": {
@@ -208,14 +202,20 @@
       "id": 1,
       "name": "Start",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Start Charging" }
+      ],
       "description": "Command for Start."
     },
     {
       "id": 2,
       "name": "Stop",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Stop Charging" }
+      ],
       "description": "Command for Stop."
     },
     {

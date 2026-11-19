@@ -223,25 +223,19 @@
       "name": "Setpoint Temperature",
       "unit": "℃",
       "type": "number",
-      "description": "Measurement for Setpoint Temperature.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Setpoint Temperature."
     },
     {
       "id": 12,
       "name": "Operating Mode",
       "unit": "",
-      "type": "string",
-      "options": [
-        "cooling",
-        "heating",
-        "off"
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Cooling" },
+        { "key": "2", "label": "Heating" },
+        { "key": "3", "label": "Off" }
       ],
-      "description": "Measurement for Operating Mode.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Operating Mode."
     }
   ],
   "A": [

@@ -120,10 +120,7 @@
       "id": 3,
       "name": "Power Factor",
       "type": "number",
-      "description": "Measurement for Power Factor.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Power Factor."
     },
     {
       "id": 4,
@@ -234,10 +231,7 @@
       "name": "Current Demand",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Current Demand.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Current Demand."
     }
   ],
   "A": []

@@ -197,10 +197,7 @@
       "name": "Efficiency",
       "unit": "%",
       "type": "number",
-      "description": "Measurement for Efficiency.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Efficiency."
     },
     {
       "id": 17,
@@ -217,10 +214,7 @@
       "name": "Start Stop Status",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Start Stop Status.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Start Stop Status."
     },
     {
       "id": 19,
@@ -235,14 +229,20 @@
       "id": 1,
       "name": "Start",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Start" }
+      ],
       "description": "Command for Start."
     },
     {
       "id": 2,
       "name": "Stop",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Stop" }
+      ],
       "description": "Command for Stop."
     },
     {
@@ -256,7 +256,10 @@
       "id": 4,
       "name": "Clear Error",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Reset Fault" }
+      ],
       "description": "Command for Clear Error."
     }
   ]

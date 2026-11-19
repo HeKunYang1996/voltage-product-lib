@@ -120,10 +120,7 @@
       "name": "Battery Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Battery Power.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Battery Power."
     },
     {
       "id": 4,
@@ -144,83 +141,80 @@
       "name": "Battery SOC",
       "unit": "%",
       "type": "number",
-      "description": "Measurement for Battery SOC.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Battery SOC."
     },
     {
-      "id": 8,
+      "id": 7,
       "name": "Load Power",
       "unit": "kW",
       "type": "number",
       "description": "Measurement for Load Power."
     },
     {
-      "id": 11,
+      "id": 8,
       "name": "Inverter Output Frequency",
       "unit": "Hz",
       "type": "number",
       "description": "Measurement for Inverter Output Frequency."
     },
     {
-      "id": 13,
+      "id": 9,
       "name": "Heat Sink Temperature",
       "unit": "℃",
       "type": "number",
       "description": "Measurement for Heat Sink Temperature."
     },
     {
-      "id": 15,
+      "id": 10,
       "name": "PV Energy Today",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for PV Energy Today."
+      "description": "Measurement for PV Energy Today.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
-      "id": 16,
+      "id": 11,
       "name": "PV Energy Total",
       "unit": "kWh",
       "type": "number",
       "description": "Measurement for PV Energy Total."
     },
     {
-      "id": 18,
+      "id": 12,
       "name": "Battery Charge Energy Total",
       "unit": "kWh",
       "type": "number",
       "description": "Measurement for Battery Charge Energy Total."
     },
     {
-      "id": 20,
+      "id": 13,
       "name": "Battery Discharge Energy Total",
       "unit": "kWh",
       "type": "number",
       "description": "Measurement for Battery Discharge Energy Total."
     },
     {
-      "id": 27,
+      "id": 14,
       "name": "Operating Status",
       "unit": "",
-      "type": "string",
+      "type": "enum",
       "description": "Measurement for Operating Status.",
-      "options": [
-        "unknown",
-        "standby",
-        "running",
-        "stopped",
-        "fault"
+      "enumData": [
+        { "key": "1", "label": "Unknown" },
+        { "key": "2", "label": "Standby" },
+        { "key": "3", "label": "Running" },
+        { "key": "4", "label": "Stopped" },
+        { "key": "5", "label": "Fault" }
       ]
     },
     {
-      "id": 28,
+      "id": 15,
       "name": "Start Stop Status",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Start Stop Status.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Start Stop Status."
     }
   ],
   "A": [
@@ -228,14 +222,20 @@
       "id": 1,
       "name": "Start",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Start" }
+      ],
       "description": "Command for Start."
     },
     {
       "id": 2,
       "name": "Stop",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Stop" }
+      ],
       "description": "Command for Stop."
     },
     {

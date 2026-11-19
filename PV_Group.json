@@ -20,7 +20,7 @@
     {
       "id": 1,
       "name": "Max Power",
-      "unit": "kw",
+      "unit": "kW",
       "type": "number",
       "description": "Configuration for Max Power."
     },
@@ -85,7 +85,7 @@
     {
       "id": 1,
       "name": "PV Power (Array)",
-      "unit": "kw",
+      "unit": "kW",
       "type": "number",
       "description": "Measurement for PV Power (Array)."
     },
@@ -106,14 +106,14 @@
     {
       "id": 4,
       "name": "Sub PVI",
-      "unit": "kw",
+      "unit": "kW",
       "type": "number",
       "description": "Measurement for Sub PVI."
     },
     {
       "id": 5,
       "name": "Energy Today",
-      "unit": "kwh",
+      "unit": "kWh",
       "type": "number",
       "description": "Measurement for Energy Today.",
       "attr": {
@@ -125,15 +125,12 @@
       "name": "Start Stop Status",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Start Stop Status.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Start Stop Status."
     },
     {
       "id": 7,
       "name": "PV Power",
-      "unit": "kw",
+      "unit": "kW",
       "type": "number",
       "description": "Measurement for PV Power.",
       "attr": {
@@ -195,12 +192,9 @@
     {
       "id": 15,
       "name": "Energy Total",
-      "unit": "kwh",
+      "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Energy Total.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Energy Total."
     }
   ],
   "A": [
@@ -208,20 +202,26 @@
       "id": 1,
       "name": "Start",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Start" }
+      ],
       "description": "Command for Start."
     },
     {
       "id": 2,
       "name": "Stop",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Stop" }
+      ],
       "description": "Command for Stop."
     },
     {
       "id": 3,
       "name": "Power Set",
-      "unit": "kw",
+      "unit": "kW",
       "type": "number",
       "description": "Command for Power Set."
     },
@@ -229,7 +229,10 @@
       "id": 4,
       "name": "Clear Error",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Reset Fault" }
+      ],
       "description": "Command for Clear Error."
     }
   ]
