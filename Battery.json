@@ -139,20 +139,14 @@
       "name": "Charge Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Charge Power.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Charge Power."
     },
     {
       "id": 6,
       "name": "Discharge Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Discharge Power.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Discharge Power."
     },
     {
       "id": 7,
@@ -253,69 +247,76 @@
     },
     {
       "id": 20,
-      "name": "Charge Energy Today",
-      "unit": "kWh",
+      "name": "BMS Charge Current Limit",
+      "unit": "A",
       "type": "number",
-      "description": "Measurement for Charge Energy Today."
+      "description": "Current charging limit reported by the BMS."
     },
     {
       "id": 21,
-      "name": "Discharge Energy Today",
-      "unit": "kWh",
+      "name": "BMS Discharge Current Limit",
+      "unit": "A",
       "type": "number",
-      "description": "Measurement for Discharge Energy Today."
+      "description": "Current discharging limit reported by the BMS."
     },
     {
-      "id": 101,
+      "id": 22,
+      "name": "Online Battery Pack Count",
+      "unit": "",
+      "type": "number",
+      "description": "Number of battery packs currently communicating with the gateway."
+    },
+    {
+      "id": 23,
       "name": "Daily Charge Energy",
       "unit": "kWh",
       "type": "number",
       "description": "Measurement for Daily Charge Energy."
     },
     {
-      "id": 102,
+      "id": 24,
       "name": "Daily Discharge Energy",
       "unit": "kWh",
       "type": "number",
       "description": "Measurement for Daily Discharge Energy."
     },
     {
-      "id": 103,
+      "id": 25,
       "name": "Weekly Charge Energy",
       "unit": "kWh",
       "type": "number",
       "description": "Measurement for Weekly Charge Energy."
     },
     {
-      "id": 104,
+      "id": 26,
       "name": "Weekly Discharge Energy",
       "unit": "kWh",
       "type": "number",
       "description": "Measurement for Weekly Discharge Energy."
     },
     {
-      "id": 105,
+      "id": 27,
       "name": "Monthly Charge Energy",
       "unit": "kWh",
       "type": "number",
       "description": "Measurement for Monthly Charge Energy."
     },
     {
-      "id": 106,
+      "id": 28,
       "name": "Monthly Discharge Energy",
       "unit": "kWh",
       "type": "number",
       "description": "Measurement for Monthly Discharge Energy."
     },
     {
-      "id": 107,
+      "id": 29,
       "name": "Quarterly Charge Energy",
       "unit": "kWh",
       "type": "number",
       "description": "Measurement for Quarterly Charge Energy."
     },
     {
-      "id": 108,
+      "id": 30,
       "name": "Quarterly Discharge Energy",
       "unit": "kWh",
       "type": "number",
@@ -327,21 +328,30 @@
       "id": 1,
       "name": "Start",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Start" }
+      ],
       "description": "Command for Start."
     },
     {
       "id": 2,
       "name": "Stop",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Stop" }
+      ],
       "description": "Command for Stop."
     },
     {
       "id": 3,
       "name": "Clear Error",
       "unit": "",
-      "type": "string",
+      "type": "enum",
+      "enumData": [
+        { "key": "1", "label": "Reset Fault" }
+      ],
       "description": "Command for Clear Error."
     }
   ]

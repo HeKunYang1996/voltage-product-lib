@@ -108,10 +108,7 @@
       "name": "Total Reactive Power",
       "unit": "kvar",
       "type": "number",
-      "description": "Measurement for Total Reactive Power.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Total Reactive Power."
     },
     {
       "id": 3,
@@ -197,17 +194,17 @@
       "name": "Total Energy",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Total Energy.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Total Energy."
     },
     {
       "id": 15,
       "name": "Energy Today",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Energy Today."
+      "description": "Measurement for Energy Today.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 16,
@@ -228,10 +225,7 @@
       "name": "Current Demand",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Current Demand.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Current Demand."
     }
   ],
   "A": []

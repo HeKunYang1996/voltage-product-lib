@@ -124,10 +124,7 @@
       "name": "Current",
       "unit": "A",
       "type": "number",
-      "description": "Measurement for Current.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Current."
     },
     {
       "id": 5,
@@ -141,10 +138,7 @@
       "name": "Power Factor",
       "unit": "",
       "type": "number",
-      "description": "Measurement for Power Factor.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Power Factor."
     },
     {
       "id": 7,
@@ -161,7 +155,7 @@
       "description": "Measurement for Apparent Power."
     },
     {
-      "id": 10,
+      "id": 9,
       "name": "Energy Used Today",
       "unit": "kWh",
       "type": "number",
