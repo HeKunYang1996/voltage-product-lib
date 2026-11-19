@@ -190,10 +190,7 @@
       "name": "Coolant Temperature",
       "unit": "℃",
       "type": "number",
-      "description": "Engine coolant temperature.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Engine coolant temperature."
     },
     {
       "id": 15,
@@ -221,7 +218,10 @@
       "name": "Diesel Energy Today",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Diesel Energy Today."
+      "description": "Measurement for Diesel Energy Today.",
+      "attr": {
+        "isDisplay": "true"
+      }
     }
   ],
   "A": [

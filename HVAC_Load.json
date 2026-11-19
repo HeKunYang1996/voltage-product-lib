@@ -154,7 +154,10 @@
       "name": "Energy Used",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Energy Used."
+      "description": "Measurement for Energy Used.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 3,
@@ -232,10 +235,7 @@
         { "key": "2", "label": "Heating" },
         { "key": "3", "label": "Off" }
       ],
-      "description": "Measurement for Operating Mode.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Operating Mode."
     }
   ],
   "A": [

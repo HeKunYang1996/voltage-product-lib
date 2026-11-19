@@ -120,10 +120,7 @@
       "name": "Battery Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Battery Power.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Measurement for Battery Power."
     },
     {
       "id": 4,
@@ -172,7 +169,10 @@
       "name": "PV Energy Today",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for PV Energy Today."
+      "description": "Measurement for PV Energy Today.",
+      "attr": {
+        "isDisplay": "true"
+      }
     },
     {
       "id": 11,
