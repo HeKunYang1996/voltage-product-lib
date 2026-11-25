@@ -1,0 +1,461 @@
+{
+  "name": "Single_Phase_Hybrid_Inverter",
+  "displayName": "Hybrid Inverter (Single Phase)",
+  "type": "Inverter",
+  "description": "Single-phase off-grid hybrid inverter with PV DC input, bidirectional battery DC power, and AC supply to loads.",
+  "topology": {
+    "image": "device-HybridInverter.png",
+    "connections": [
+      {
+        "products": [
+          "PV_Group"
+        ],
+        "min": 0,
+        "max": null
+      },
+      {
+        "products": [
+          "Battery"
+        ],
+        "min": 0,
+        "max": null
+      },
+      {
+        "products": [
+          "Single_Phase_Meter",
+          "Three_Phase_Meter"
+        ],
+        "min": 1,
+        "max": 1
+      }
+    ],
+    "description": "One Meter connection is required. PV Group and Battery connections are optional and remain subject to peer rules."
+  },
+  "P": [
+    {
+      "id": 1,
+      "name": "Max Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Rated continuous AC active power of the inverter conversion output."
+    },
+    {
+      "id": 2,
+      "name": "Rated AC Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Rated AC voltage for the installed single-phase or split-phase wiring. Record whether the specified value is line-to-neutral or line-to-line."
+    },
+    {
+      "id": 3,
+      "name": "Rated Frequency",
+      "unit": "Hz",
+      "type": "number",
+      "description": "Rated AC output frequency."
+    },
+    {
+      "id": 4,
+      "name": "Max PV Input Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Maximum usable DC power across all PV inputs."
+    },
+    {
+      "id": 5,
+      "name": "Max PV Input Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Maximum permitted DC voltage at each PV input."
+    },
+    {
+      "id": 6,
+      "name": "Nominal Battery Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Nominal DC voltage of the battery connection."
+    },
+    {
+      "id": 7,
+      "name": "Max Battery Charge Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Maximum continuous battery charging power for the installed inverter and terminal arrangement."
+    },
+    {
+      "id": 8,
+      "name": "Max Battery Discharge Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Maximum continuous battery discharging power for the installed inverter and terminal arrangement."
+    }
+  ],
+  "M": [
+    {
+      "id": 1,
+      "name": "SOC",
+      "unit": "%",
+      "type": "number",
+      "description": "State of charge of the connected battery reported by the inverter.",
+      "attr": {
+        "isDisplay": "true"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Heat Sink Temperature",
+      "unit": "℃",
+      "type": "number",
+      "description": "IGBT heat sink temperature reported by the inverter."
+    },
+    {
+      "id": 3,
+      "name": "Start Stop Status",
+      "unit": "",
+      "type": "enum",
+      "description": "Reported operating state of the hybrid inverter: Stopped or Running. Map only when a confirmed read source exists; do not infer from power.",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Stopped",
+          "value": "",
+          "description": "The mapped status source reports that the device is stopped. Read this state from a confirmed status signal."
+        },
+        {
+          "key": "2",
+          "label": "Running",
+          "value": "",
+          "description": "The mapped status source reports that the device is running. Check power measurements separately to determine its actual output."
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "name": "AC Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Net active power at the device AC conversion connection. Positive from the AC system into the device; negative from the device toward the AC system. Normalize the source sign when mapping. AC output can originate from PV or the battery. Load-port power can also include AC pass-through power; determine battery charging or discharging from Battery Power."
+    },
+    {
+      "id": 102,
+      "name": "DC Input Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Total DC power received from all active PV inputs. Sum only the inputs applicable to the installed model. Battery power is measured separately.",
+      "attr": {
+        "isDisplay": "true"
+      }
+    },
+    {
+      "id": 103,
+      "name": "Battery Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Net DC power at the battery connection. Positive into the battery during charging; negative out of the battery during discharging. Normalize the source sign when mapping.",
+      "attr": {
+        "isDisplay": "true"
+      }
+    },
+    {
+      "id": 104,
+      "name": "Load Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Total active power supplied through the load connection from the available sources, including any AC pass-through supply."
+    },
+    {
+      "id": 105,
+      "name": "Battery Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "DC voltage measured at the inverter battery terminals."
+    },
+    {
+      "id": 106,
+      "name": "Battery Current",
+      "unit": "A",
+      "type": "number",
+      "description": "Net DC current at the battery connection. Positive into the battery during charging; negative out of the battery during discharging. Normalize the source sign when mapping."
+    },
+    {
+      "id": 107,
+      "name": "AC Frequency",
+      "unit": "Hz",
+      "type": "number",
+      "description": "Frequency at the inverter conversion AC output."
+    },
+    {
+      "id": 108,
+      "name": "PV Energy Total",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Cumulative DC energy received from the PV inputs."
+    },
+    {
+      "id": 109,
+      "name": "Charge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Cumulative DC energy delivered by this inverter into the battery during charging."
+    },
+    {
+      "id": 110,
+      "name": "Discharge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Cumulative DC energy received by this inverter from the battery during discharging."
+    },
+    {
+      "id": 111,
+      "name": "Load Energy Total",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Cumulative AC energy supplied through the load connection."
+    },
+    {
+      "id": 201,
+      "name": "Daily Charge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Charge DC energy at the inverter battery connection for the current day, calculated by the EMS from the change in M109 relative to its period baseline. Period starts at local midnight. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 202,
+      "name": "Daily Discharge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Discharge DC energy at the inverter battery connection for the current day, calculated by the EMS from the change in M110 relative to its period baseline. Period starts at local midnight. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 203,
+      "name": "Weekly Charge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Charge DC energy at the inverter battery connection for the current week, calculated by the EMS from the change in M109 relative to its period baseline. Period starts at the configured calendar-week boundary. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 204,
+      "name": "Weekly Discharge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Discharge DC energy at the inverter battery connection for the current week, calculated by the EMS from the change in M110 relative to its period baseline. Period starts at the configured calendar-week boundary. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 205,
+      "name": "Monthly Charge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Charge DC energy at the inverter battery connection for the current month, calculated by the EMS from the change in M109 relative to its period baseline. Period starts on the first day of the calendar month. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 206,
+      "name": "Monthly Discharge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Discharge DC energy at the inverter battery connection for the current month, calculated by the EMS from the change in M110 relative to its period baseline. Period starts on the first day of the calendar month. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 207,
+      "name": "Quarterly Charge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Charge DC energy at the inverter battery connection for the current quarter, calculated by the EMS from the change in M109 relative to its period baseline. Period starts on January 1, April 1, July 1, or October 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 208,
+      "name": "Quarterly Discharge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Discharge DC energy at the inverter battery connection for the current quarter, calculated by the EMS from the change in M110 relative to its period baseline. Period starts on January 1, April 1, July 1, or October 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 209,
+      "name": "PV Daily Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "PV DC input energy for the current day, calculated by the EMS from the change in M108 relative to its period baseline. Period starts at local midnight. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 210,
+      "name": "PV Weekly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "PV DC input energy for the current week, calculated by the EMS from the change in M108 relative to its period baseline. Period starts at the configured calendar-week boundary. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 211,
+      "name": "PV Monthly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "PV DC input energy for the current month, calculated by the EMS from the change in M108 relative to its period baseline. Period starts on the first day of the calendar month. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 212,
+      "name": "PV Quarterly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "PV DC input energy for the current quarter, calculated by the EMS from the change in M108 relative to its period baseline. Period starts on January 1, April 1, July 1, or October 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 213,
+      "name": "Load Daily Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC load-port energy for the current day, calculated by the EMS from the change in M111 relative to its period baseline. Period starts at local midnight. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 214,
+      "name": "Load Weekly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC load-port energy for the current week, calculated by the EMS from the change in M111 relative to its period baseline. Period starts at the configured calendar-week boundary. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 215,
+      "name": "Load Monthly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC load-port energy for the current month, calculated by the EMS from the change in M111 relative to its period baseline. Period starts on the first day of the calendar month. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 216,
+      "name": "Load Quarterly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC load-port energy for the current quarter, calculated by the EMS from the change in M111 relative to its period baseline. Period starts on January 1, April 1, July 1, or October 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 217,
+      "name": "Yearly Charge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Charge DC energy at the inverter battery connection for the current calendar year, calculated by the EMS from the change in M109 relative to its period baseline. Period starts on January 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires annual aggregation support and a valid year-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 218,
+      "name": "Yearly Discharge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Discharge DC energy at the inverter battery connection for the current calendar year, calculated by the EMS from the change in M110 relative to its period baseline. Period starts on January 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires annual aggregation support and a valid year-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 219,
+      "name": "PV Yearly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "PV DC input energy for the current calendar year, calculated by the EMS from the change in M108 relative to its period baseline. Period starts on January 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires annual aggregation support and a valid year-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 220,
+      "name": "Load Yearly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC load-port energy for the current calendar year, calculated by the EMS from the change in M111 relative to its period baseline. Period starts on January 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires annual aggregation support and a valid year-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    }
+  ],
+  "A": [
+    {
+      "id": 1,
+      "name": "Start",
+      "unit": "",
+      "type": "enum",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Start",
+          "value": "",
+          "description": "Request the device to start through its configured control route. Confirm the outcome using the Start Stop Status measurement."
+        }
+      ],
+      "description": "Request the hybrid inverter to start. Requires a verified writable interface for the installed model and firmware."
+    },
+    {
+      "id": 2,
+      "name": "Stop",
+      "unit": "",
+      "type": "enum",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Stop",
+          "value": "",
+          "description": "Request the device to stop through its configured control route. Confirm the outcome using the Start Stop Status measurement."
+        }
+      ],
+      "description": "Request the hybrid inverter to stop. Requires a verified writable interface for the installed model and firmware."
+    },
+    {
+      "id": 3,
+      "name": "Power Set",
+      "unit": "kW",
+      "type": "number",
+      "description": "Request an AC active power target at the device AC conversion connection. Positive commands power from the AC system into the device; negative commands power from the device toward the AC system. Requires a verified writable interface supporting this target and direction for the installed model and firmware. Convert the command to the device sign convention in the action route."
+    },
+    {
+      "id": 4,
+      "name": "Battery Power Set",
+      "unit": "kW",
+      "type": "number",
+      "description": "Request a DC power target at the battery connection. Positive commands battery charging; negative commands battery discharging. Requires a verified writable interface supporting this target and direction for the installed model and firmware. Convert the command to the device sign convention in the action route."
+    }
+  ]
+}

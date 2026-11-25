@@ -1,13 +1,15 @@
 {
   "name": "Single_Phase_Load",
+  "displayName": "Load (Single Phase)",
   "type": "Load",
-  "description": "Single-phase load with electrical measurements and operating constraints.",
+  "description": "Generic single-phase AC load for off-grid consumption monitoring.",
   "topology": {
     "image": "device-SinglePhaseLoad.png",
     "connections": [
       {
         "products": [
-          "Meter"
+          "Single_Phase_Meter",
+          "Three_Phase_Meter"
         ],
         "min": 1,
         "max": 1
@@ -18,150 +20,138 @@
   "P": [
     {
       "id": 1,
-      "name": "Max Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Configuration for Max Voltage."
-    },
-    {
-      "id": 2,
-      "name": "Max Current",
-      "unit": "A",
-      "type": "number",
-      "description": "Configuration for Max Current."
-    },
-    {
-      "id": 3,
-      "name": "Rated Frequency",
-      "unit": "Hz",
-      "type": "number",
-      "description": "Configuration for Rated Frequency."
-    },
-    {
-      "id": 4,
       "name": "Max Power",
       "unit": "kW",
       "type": "number",
-      "description": "Configuration for Max Power."
+      "description": "Configured maximum total AC active power consumed by this load."
     },
     {
-      "id": 5,
-      "name": "Load Flexibility",
-      "unit": "",
-      "type": "string",
-      "options": [
-        "rigid",
-        "flexible"
-      ],
-      "description": "Configuration for Load Flexibility."
-    },
-    {
-      "id": 6,
-      "name": "Adjustable Power Range",
-      "unit": "kW",
+      "id": 2,
+      "name": "Max Voltage",
+      "unit": "V",
       "type": "number",
-      "description": "Configuration for Adjustable Power Range."
+      "description": "Maximum permitted line-to-neutral AC supply voltage for this load."
     },
     {
-      "id": 7,
-      "name": "Response Time",
-      "unit": "min",
+      "id": 3,
+      "name": "Max Current",
+      "unit": "A",
       "type": "number",
-      "description": "Configuration for Response Time."
+      "description": "Maximum continuous AC supply current for this load."
     },
     {
-      "id": 8,
-      "name": "Min Runtime",
-      "unit": "min",
+      "id": 4,
+      "name": "Rated Frequency",
+      "unit": "Hz",
       "type": "number",
-      "description": "Configuration for Min Runtime."
-    },
-    {
-      "id": 9,
-      "name": "Max Interrupt Time",
-      "unit": "min",
-      "type": "number",
-      "description": "Configuration for Max Interrupt Time."
-    },
-    {
-      "id": 10,
-      "name": "Shiftable Time Window",
-      "unit": "min",
-      "type": "number",
-      "description": "Configuration for Shiftable Time Window."
+      "description": "Rated frequency of the load AC supply."
     }
   ],
   "M": [
     {
-      "id": 1,
-      "name": "Load Power",
+      "id": 101,
+      "name": "AC Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Load Power.",
+      "description": "Total AC active power at the load connection. Positive for consumption and negative for reverse power. Normalize the meter installation direction when mapping.",
       "attr": {
         "isDisplay": "true"
       }
     },
     {
-      "id": 2,
-      "name": "Energy Used",
-      "unit": "kWh",
-      "type": "number",
-      "description": "Measurement for Energy Used."
-    },
-    {
-      "id": 3,
-      "name": "Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Measurement for Voltage.",
-      "attr": {
-        "isDisplay": "true"
-      }
-    },
-    {
-      "id": 4,
-      "name": "Current",
-      "unit": "A",
-      "type": "number",
-      "description": "Measurement for Current."
-    },
-    {
-      "id": 5,
-      "name": "Frequency",
-      "unit": "Hz",
-      "type": "number",
-      "description": "Measurement for Frequency."
-    },
-    {
-      "id": 6,
-      "name": "Power Factor",
-      "unit": "",
-      "type": "number",
-      "description": "Measurement for Power Factor."
-    },
-    {
-      "id": 7,
-      "name": "Reactive Power",
+      "id": 102,
+      "name": "AC Reactive Power",
       "unit": "kvar",
       "type": "number",
-      "description": "Measurement for Reactive Power."
+      "description": "Total reactive power at the load connection. Map the source device reactive-power sign convention."
     },
     {
-      "id": 8,
-      "name": "Apparent Power",
-      "unit": "kVA",
+      "id": 103,
+      "name": "AC Power Factor",
+      "unit": "",
       "type": "number",
-      "description": "Measurement for Apparent Power."
+      "description": "Overall power factor reported at the load connection. Map the source device sign convention."
     },
     {
-      "id": 9,
-      "name": "Energy Used Today",
+      "id": 104,
+      "name": "AC Frequency",
+      "unit": "Hz",
+      "type": "number",
+      "description": "Frequency of the load AC supply."
+    },
+    {
+      "id": 105,
+      "name": "AC Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Voltage between line and neutral at the single-phase load connection."
+    },
+    {
+      "id": 108,
+      "name": "AC Current",
+      "unit": "A",
+      "type": "number",
+      "description": "Current magnitude at the single-phase load connection."
+    },
+    {
+      "id": 114,
+      "name": "Load Energy Total",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Energy Used Today.",
+      "description": "Cumulative AC energy consumed by this load. Map the import counter of a meter covering this load, with installation direction verified.",
       "attr": {
         "isDisplay": "true"
+      }
+    },
+    {
+      "id": 201,
+      "name": "Load Daily Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy consumed during the current day, calculated by the EMS from the change in M114 relative to its period baseline. Period starts at local midnight. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "isDisplay": "true",
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 202,
+      "name": "Load Weekly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy consumed during the current week, calculated by the EMS from the change in M114 relative to its period baseline. Period starts at the configured calendar-week boundary. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 203,
+      "name": "Load Monthly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy consumed during the current month, calculated by the EMS from the change in M114 relative to its period baseline. Period starts on the first day of the calendar month. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 204,
+      "name": "Load Quarterly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy consumed during the current quarter, calculated by the EMS from the change in M114 relative to its period baseline. Period starts on January 1, April 1, July 1, or October 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 205,
+      "name": "Load Yearly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy consumed during the current calendar year, calculated by the EMS from the change in M114 relative to its period baseline. Period starts on January 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires annual aggregation support and a valid year-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
       }
     }
   ],

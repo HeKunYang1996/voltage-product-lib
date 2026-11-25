@@ -1,14 +1,15 @@
 {
   "name": "Three_Phase_Load",
-  "display_name": "Three Phase Load",
+  "displayName": "Load (Three Phase)",
   "type": "Load",
-  "description": "Three-phase load with electrical measurements and operating constraints.",
+  "description": "Generic three-phase AC load for off-grid consumption monitoring.",
   "topology": {
     "image": "device-ThreePhaseLoad.png",
     "connections": [
       {
         "products": [
-          "Meter"
+          "Single_Phase_Meter",
+          "Three_Phase_Meter"
         ],
         "min": 1,
         "max": 1
@@ -19,213 +20,215 @@
   "P": [
     {
       "id": 1,
-      "name": "Max Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Configuration for Max Voltage."
-    },
-    {
-      "id": 2,
-      "name": "Max Current",
-      "unit": "A",
-      "type": "number",
-      "description": "Configuration for Max Current."
-    },
-    {
-      "id": 3,
-      "name": "Rated Frequency",
-      "unit": "Hz",
-      "type": "number",
-      "description": "Configuration for Rated Frequency."
-    },
-    {
-      "id": 4,
       "name": "Max Power",
       "unit": "kW",
       "type": "number",
-      "description": "Configuration for Max Power."
+      "description": "Configured maximum total AC active power consumed by this load."
     },
     {
-      "id": 5,
-      "name": "Load Flexibility",
-      "unit": "",
-      "type": "string",
-      "options": [
-        "rigid",
-        "flexible"
-      ],
-      "description": "Configuration for Load Flexibility."
-    },
-    {
-      "id": 6,
-      "name": "Adjustable Power Range",
-      "unit": "kW",
+      "id": 2,
+      "name": "Max Voltage",
+      "unit": "V",
       "type": "number",
-      "description": "Configuration for Adjustable Power Range."
+      "description": "Maximum permitted line-to-line AC supply voltage for this load."
     },
     {
-      "id": 7,
-      "name": "Response Time",
-      "unit": "min",
+      "id": 3,
+      "name": "Max Current",
+      "unit": "A",
       "type": "number",
-      "description": "Configuration for Response Time."
+      "description": "Maximum continuous AC supply current per line for this load."
     },
     {
-      "id": 8,
-      "name": "Min Runtime",
-      "unit": "min",
+      "id": 4,
+      "name": "Rated Frequency",
+      "unit": "Hz",
       "type": "number",
-      "description": "Configuration for Min Runtime."
-    },
-    {
-      "id": 9,
-      "name": "Max Interrupt Time",
-      "unit": "min",
-      "type": "number",
-      "description": "Configuration for Max Interrupt Time."
-    },
-    {
-      "id": 10,
-      "name": "Shiftable Time Window",
-      "unit": "min",
-      "type": "number",
-      "description": "Configuration for Shiftable Time Window."
+      "description": "Rated frequency of the load AC supply."
     }
   ],
   "M": [
     {
-      "id": 1,
-      "name": "Total Active Power",
+      "id": 101,
+      "name": "AC Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for Total Active Power.",
+      "description": "Total AC active power at the load connection. Positive for consumption and negative for reverse power. Normalize the meter installation direction when mapping.",
       "attr": {
         "isDisplay": "true"
       }
     },
     {
-      "id": 2,
-      "name": "Total Reactive Power",
+      "id": 102,
+      "name": "AC Reactive Power",
       "unit": "kvar",
       "type": "number",
-      "description": "Measurement for Total Reactive Power."
+      "description": "Total reactive power at the load connection. Map the source device reactive-power sign convention."
     },
     {
-      "id": 3,
-      "name": "Power Factor",
+      "id": 103,
+      "name": "AC Power Factor",
+      "unit": "",
       "type": "number",
-      "description": "Measurement for Power Factor.",
-      "attr": {
-        "isDisplay": "true"
-      }
+      "description": "Overall power factor reported at the load connection. Map the source device sign convention."
     },
     {
-      "id": 4,
-      "name": "Frequency",
+      "id": 104,
+      "name": "AC Frequency",
       "unit": "Hz",
       "type": "number",
-      "description": "Measurement for Frequency."
+      "description": "Frequency of the load AC supply."
     },
     {
-      "id": 5,
-      "name": "A Phase Voltage",
+      "id": 105,
+      "name": "L1 Voltage",
       "unit": "V",
       "type": "number",
-      "description": "Measurement for A Phase Voltage."
+      "description": "Voltage between L1 and neutral at the load connection.",
+      "attr": {
+        "displayGroup": "AC Voltage"
+      }
     },
     {
-      "id": 6,
-      "name": "B Phase Voltage",
+      "id": 106,
+      "name": "L2 Voltage",
       "unit": "V",
       "type": "number",
-      "description": "Measurement for B Phase Voltage."
+      "description": "Voltage between L2 and neutral at the load connection.",
+      "attr": {
+        "displayGroup": "AC Voltage"
+      }
     },
     {
-      "id": 7,
-      "name": "C Phase Voltage",
+      "id": 107,
+      "name": "L3 Voltage",
       "unit": "V",
       "type": "number",
-      "description": "Measurement for C Phase Voltage."
+      "description": "Voltage between L3 and neutral at the load connection.",
+      "attr": {
+        "displayGroup": "AC Voltage"
+      }
     },
     {
-      "id": 8,
-      "name": "A Phase Current",
+      "id": 108,
+      "name": "L1 Current",
       "unit": "A",
       "type": "number",
-      "description": "Measurement for A Phase Current."
+      "description": "Current magnitude on L1 at the load connection.",
+      "attr": {
+        "displayGroup": "AC Current"
+      }
     },
     {
-      "id": 9,
-      "name": "B Phase Current",
+      "id": 109,
+      "name": "L2 Current",
       "unit": "A",
       "type": "number",
-      "description": "Measurement for B Phase Current."
+      "description": "Current magnitude on L2 at the load connection.",
+      "attr": {
+        "displayGroup": "AC Current"
+      }
     },
     {
-      "id": 10,
-      "name": "C Phase Current",
+      "id": 110,
+      "name": "L3 Current",
       "unit": "A",
       "type": "number",
-      "description": "Measurement for C Phase Current."
+      "description": "Current magnitude on L3 at the load connection.",
+      "attr": {
+        "displayGroup": "AC Current"
+      }
     },
     {
-      "id": 11,
-      "name": "A Phase Active Power",
+      "id": 111,
+      "name": "L1 Active Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for A Phase Active Power."
+      "description": "Active power on L1 at the load connection. Positive for consumption and negative for reverse power.",
+      "attr": {
+        "displayGroup": "AC Power"
+      }
     },
     {
-      "id": 12,
-      "name": "B Phase Active Power",
+      "id": 112,
+      "name": "L2 Active Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for B Phase Active Power."
+      "description": "Active power on L2 at the load connection. Positive for consumption and negative for reverse power.",
+      "attr": {
+        "displayGroup": "AC Power"
+      }
     },
     {
-      "id": 13,
-      "name": "C Phase Active Power",
+      "id": 113,
+      "name": "L3 Active Power",
       "unit": "kW",
       "type": "number",
-      "description": "Measurement for C Phase Active Power."
+      "description": "Active power on L3 at the load connection. Positive for consumption and negative for reverse power.",
+      "attr": {
+        "displayGroup": "AC Power"
+      }
     },
     {
-      "id": 14,
-      "name": "Total Energy",
+      "id": 114,
+      "name": "Load Energy Total",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Total Energy."
-    },
-    {
-      "id": 15,
-      "name": "Energy Today",
-      "unit": "kWh",
-      "type": "number",
-      "description": "Measurement for Energy Today.",
+      "description": "Cumulative AC energy consumed by this load. Map the import counter of a meter covering this load, with installation direction verified.",
       "attr": {
         "isDisplay": "true"
       }
     },
     {
-      "id": 16,
-      "name": "Energy This Month",
+      "id": 201,
+      "name": "Load Daily Energy",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Energy This Month."
+      "description": "AC energy consumed during the current day, calculated by the EMS from the change in M114 relative to its period baseline. Period starts at local midnight. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "isDisplay": "true",
+        "monitorVisible": "false"
+      }
     },
     {
-      "id": 17,
-      "name": "Max Demand This Month",
-      "unit": "kW",
+      "id": 202,
+      "name": "Load Weekly Energy",
+      "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Max Demand This Month."
+      "description": "AC energy consumed during the current week, calculated by the EMS from the change in M114 relative to its period baseline. Period starts at the configured calendar-week boundary. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
     },
     {
-      "id": 18,
-      "name": "Current Demand",
-      "unit": "kW",
+      "id": 203,
+      "name": "Load Monthly Energy",
+      "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Current Demand."
+      "description": "AC energy consumed during the current month, calculated by the EMS from the change in M114 relative to its period baseline. Period starts on the first day of the calendar month. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 204,
+      "name": "Load Quarterly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy consumed during the current quarter, calculated by the EMS from the change in M114 relative to its period baseline. Period starts on January 1, April 1, July 1, or October 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 205,
+      "name": "Load Yearly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy consumed during the current calendar year, calculated by the EMS from the change in M114 relative to its period baseline. Period starts on January 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires annual aggregation support and a valid year-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
     }
   ],
   "A": []

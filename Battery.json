@@ -1,5 +1,6 @@
 {
   "name": "Battery",
+  "displayName": "Battery",
   "type": "ESS",
   "description": "Battery energy storage device with capacity, operating limits, and runtime measurements.",
   "topology": {
@@ -7,320 +8,335 @@
     "connections": [
       {
         "products": [
-          "Hybrid_Inverter",
-          "PCS"
+          "Single_Phase_Hybrid_Inverter",
+          "Three_Phase_Hybrid_Inverter",
+          "Three_Phase_PCS",
+          "Single_Phase_PCS"
         ],
         "min": 1,
         "max": null
       }
     ],
-    "description": "Connect to one or more Hybrid Inverters and/or PCS devices across this group, with no product-level maximum."
+    "description": "Connect to one or more single-phase or three-phase hybrid inverters and/or PCS devices across this group, with no product-level maximum."
   },
   "P": [
     {
       "id": 1,
-      "name": "Max Power",
-      "unit": "kW",
-      "type": "number",
-      "description": "Configuration for Max Power."
-    },
-    {
-      "id": 2,
-      "name": "Max Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Configuration for Max Voltage."
-    },
-    {
-      "id": 3,
-      "name": "Max Current",
-      "unit": "A",
-      "type": "number",
-      "description": "Configuration for Max Current."
-    },
-    {
-      "id": 4,
       "name": "Max Capacity",
       "unit": "kWh",
       "type": "number",
-      "description": "Configuration for Max Capacity."
+      "description": "Manufacturer-specified usable energy for the configured battery system."
+    },
+    {
+      "id": 2,
+      "name": "Nominal Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Manufacturer-specified nominal DC voltage of the battery system."
+    },
+    {
+      "id": 3,
+      "name": "Max Charge Current",
+      "unit": "A",
+      "type": "number",
+      "description": "Manufacturer-specified maximum continuous DC charging current for the battery system."
+    },
+    {
+      "id": 4,
+      "name": "Max Discharge Current",
+      "unit": "A",
+      "type": "number",
+      "description": "Manufacturer-specified maximum continuous DC discharging current for the battery system."
     },
     {
       "id": 5,
-      "name": "Battery Pack Count",
-      "unit": "",
-      "type": "number",
-      "description": "Configuration for Battery Pack Count."
-    },
-    {
-      "id": 6,
-      "name": "Cell Count",
-      "unit": "",
-      "type": "number",
-      "description": "Configuration for Cell Count."
-    },
-    {
-      "id": 7,
-      "name": "Temperature Count",
-      "unit": "",
-      "type": "number",
-      "description": "Configuration for Temperature Count."
-    },
-    {
-      "id": 8,
-      "name": "Min Power",
+      "name": "Max Discharge Power",
       "unit": "kW",
       "type": "number",
-      "description": "Configuration for Min Power."
-    },
-    {
-      "id": 9,
-      "name": "Min SOC",
-      "unit": "%",
-      "type": "number",
-      "description": "Configuration for Min SOC."
-    },
-    {
-      "id": 10,
-      "name": "Max SOC",
-      "unit": "%",
-      "type": "number",
-      "description": "Configuration for Max SOC."
-    },
-    {
-      "id": 11,
-      "name": "Charge Efficiency",
-      "unit": "%",
-      "type": "number",
-      "description": "Configuration for Charge Efficiency."
-    },
-    {
-      "id": 12,
-      "name": "Discharge Efficiency",
-      "unit": "%",
-      "type": "number",
-      "description": "Configuration for Discharge Efficiency."
+      "description": "Manufacturer-specified maximum continuous DC discharge power for the battery system."
     }
   ],
   "M": [
     {
       "id": 1,
-      "name": "Total Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Measurement for Total Voltage."
-    },
-    {
-      "id": 2,
-      "name": "Total Current",
-      "unit": "A",
-      "type": "number",
-      "description": "Measurement for Total Current."
-    },
-    {
-      "id": 3,
-      "name": "Max Battery Pack Temperature",
-      "unit": "℃",
-      "type": "number",
-      "description": "Measurement for Max Battery Pack Temperature."
-    },
-    {
-      "id": 4,
-      "name": "Min Battery Pack Temperature",
-      "unit": "℃",
-      "type": "number",
-      "description": "Measurement for Min Battery Pack Temperature."
-    },
-    {
-      "id": 5,
-      "name": "Charge Power",
-      "unit": "kW",
-      "type": "number",
-      "description": "Measurement for Charge Power."
-    },
-    {
-      "id": 6,
-      "name": "Discharge Power",
-      "unit": "kW",
-      "type": "number",
-      "description": "Measurement for Discharge Power.",
-      "attr": {
-        "isDisplay": "true"
-      }
-    },
-    {
-      "id": 7,
       "name": "SOC",
       "unit": "%",
       "type": "number",
-      "description": "Measurement for SOC.",
+      "description": "Remaining battery charge expressed as a percentage of capacity.",
       "attr": {
         "isDisplay": "true"
       }
     },
     {
-      "id": 8,
+      "id": 2,
       "name": "SOH",
       "unit": "%",
       "type": "number",
-      "description": "Measurement for SOH."
+      "description": "Battery state of health reported by the device as a percentage."
     },
     {
-      "id": 9,
-      "name": "Charge Energy",
-      "unit": "kWh",
-      "type": "number",
-      "description": "Measurement for Charge Energy."
-    },
-    {
-      "id": 10,
-      "name": "Discharge Energy",
-      "unit": "kWh",
-      "type": "number",
-      "description": "Measurement for Discharge Energy."
-    },
-    {
-      "id": 11,
-      "name": "Charge Discharge Status",
-      "unit": "",
-      "type": "number",
-      "description": "Measurement for Charge Discharge Status."
-    },
-    {
-      "id": 12,
-      "name": "Max Cell Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Measurement for Max Cell Voltage."
-    },
-    {
-      "id": 13,
-      "name": "Min Cell Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Measurement for Min Cell Voltage."
-    },
-    {
-      "id": 14,
-      "name": "Avg Cell Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Measurement for Avg Cell Voltage."
-    },
-    {
-      "id": 15,
-      "name": "Cell Voltage Difference",
-      "unit": "V",
-      "type": "number",
-      "description": "Measurement for Cell Voltage Difference."
-    },
-    {
-      "id": 16,
-      "name": "Avg Cell Temperature",
-      "unit": "℃",
-      "type": "number",
-      "description": "Measurement for Avg Cell Temperature."
-    },
-    {
-      "id": 17,
-      "name": "Cell Voltage Array",
-      "unit": "V",
-      "type": "number",
-      "description": "Measurement for Cell Voltage Array."
-    },
-    {
-      "id": 18,
-      "name": "Cell Temperature Array",
-      "unit": "℃",
-      "type": "number",
-      "description": "Measurement for Cell Temperature Array."
-    },
-    {
-      "id": 19,
-      "name": "Battery System",
-      "unit": "%",
-      "type": "number",
-      "description": "Measurement for Battery System."
-    },
-    {
-      "id": 20,
+      "id": 3,
       "name": "BMS Charge Current Limit",
       "unit": "A",
       "type": "number",
-      "description": "Current charging limit reported by the BMS."
+      "description": "Maximum charging current currently permitted by the BMS."
     },
     {
-      "id": 21,
+      "id": 4,
       "name": "BMS Discharge Current Limit",
       "unit": "A",
       "type": "number",
-      "description": "Current discharging limit reported by the BMS."
+      "description": "Maximum discharging current currently permitted by the BMS."
     },
     {
-      "id": 22,
-      "name": "Online Battery Pack Count",
-      "unit": "",
+      "id": 5,
+      "name": "Avg Battery Temperature",
+      "unit": "℃",
       "type": "number",
-      "description": "Number of battery packs currently communicating with the gateway."
+      "description": "Average battery temperature reported by the BMS for the battery system."
     },
     {
-      "id": 23,
-      "name": "Daily Charge Energy",
-      "unit": "kWh",
+      "id": 101,
+      "name": "Battery Voltage",
+      "unit": "V",
       "type": "number",
-      "description": "Measurement for Daily Charge Energy."
+      "description": "DC terminal voltage of the battery system."
     },
     {
-      "id": 24,
-      "name": "Daily Discharge Energy",
-      "unit": "kWh",
+      "id": 102,
+      "name": "Battery Current",
+      "unit": "A",
       "type": "number",
-      "description": "Measurement for Daily Discharge Energy.",
+      "description": "Net DC current at the battery connection. Positive into the battery during charging; negative out of the battery during discharging. Normalize the source sign when mapping."
+    },
+    {
+      "id": 103,
+      "name": "Battery Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Net DC power at the battery connection. Positive into the battery during charging; negative out of the battery during discharging. Normalize the source sign when mapping.",
       "attr": {
         "isDisplay": "true"
       }
     },
     {
-      "id": 25,
+      "id": 104,
+      "name": "Charge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Cumulative energy charged into the battery. This counter is the input for periodic charge-energy calculations."
+    },
+    {
+      "id": 105,
+      "name": "Discharge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Cumulative energy discharged from the battery. This counter is the input for periodic discharge-energy calculations."
+    },
+    {
+      "id": 201,
+      "name": "Daily Charge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Charge energy for the current day, calculated by the EMS from the change in M104 relative to its period baseline. Period starts at local midnight. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 202,
+      "name": "Daily Discharge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Discharge energy for the current day, calculated by the EMS from the change in M105 relative to its period baseline. Period starts at local midnight. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "isDisplay": "true",
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 203,
       "name": "Weekly Charge Energy",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Weekly Charge Energy."
+      "description": "Charge energy for the current week, calculated by the EMS from the change in M104 relative to its period baseline. Period starts at the configured calendar-week boundary. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
     },
     {
-      "id": 26,
+      "id": 204,
       "name": "Weekly Discharge Energy",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Weekly Discharge Energy."
+      "description": "Discharge energy for the current week, calculated by the EMS from the change in M105 relative to its period baseline. Period starts at the configured calendar-week boundary. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
     },
     {
-      "id": 27,
+      "id": 205,
       "name": "Monthly Charge Energy",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Monthly Charge Energy."
+      "description": "Charge energy for the current month, calculated by the EMS from the change in M104 relative to its period baseline. Period starts on the first day of the calendar month. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
     },
     {
-      "id": 28,
+      "id": 206,
       "name": "Monthly Discharge Energy",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Monthly Discharge Energy."
+      "description": "Discharge energy for the current month, calculated by the EMS from the change in M105 relative to its period baseline. Period starts on the first day of the calendar month. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
     },
     {
-      "id": 29,
+      "id": 207,
       "name": "Quarterly Charge Energy",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Quarterly Charge Energy."
+      "description": "Charge energy for the current quarter, calculated by the EMS from the change in M104 relative to its period baseline. Period starts on January 1, April 1, July 1, or October 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
     },
     {
-      "id": 30,
+      "id": 208,
       "name": "Quarterly Discharge Energy",
       "unit": "kWh",
       "type": "number",
-      "description": "Measurement for Quarterly Discharge Energy."
+      "description": "Discharge energy for the current quarter, calculated by the EMS from the change in M105 relative to its period baseline. Period starts on January 1, April 1, July 1, or October 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Max Battery Pack Temperature",
+      "unit": "℃",
+      "type": "number",
+      "description": "Highest temperature among the reported battery pack temperatures."
+    },
+    {
+      "id": 7,
+      "name": "Min Battery Pack Temperature",
+      "unit": "℃",
+      "type": "number",
+      "description": "Lowest temperature among the reported battery pack temperatures."
+    },
+    {
+      "id": 8,
+      "name": "Charge Discharge Status",
+      "unit": "",
+      "type": "enum",
+      "description": "Reported battery state: Idle, Charging, or Discharging.",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Idle",
+          "value": "",
+          "description": "The mapped battery status source reports an idle state with no active charging or discharging."
+        },
+        {
+          "key": "2",
+          "label": "Charging",
+          "value": "",
+          "description": "The mapped battery status source reports charging, with energy flowing into the battery."
+        },
+        {
+          "key": "3",
+          "label": "Discharging",
+          "value": "",
+          "description": "The mapped battery status source reports discharging, with energy flowing out of the battery."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Avg Cell Temperature",
+      "unit": "℃",
+      "type": "number",
+      "description": "Mean of the reported battery cell temperatures."
+    },
+    {
+      "id": 10,
+      "name": "Online Battery Pack Count",
+      "unit": "",
+      "type": "number",
+      "description": "Number of battery packs reported online."
+    },
+    {
+      "id": 11,
+      "name": "Start Stop Status",
+      "unit": "",
+      "type": "enum",
+      "description": "Reported operating state of the battery system: Stopped or Running. Map only when a confirmed read source exists; do not infer from current or power.",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Stopped",
+          "value": "",
+          "description": "The mapped status source reports that the device is stopped. Read this state from a confirmed status signal."
+        },
+        {
+          "key": "2",
+          "label": "Running",
+          "value": "",
+          "description": "The mapped status source reports that the device is running. Check power measurements separately to determine its actual output."
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "name": "Max Cell Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Highest voltage among the reported battery cells."
+    },
+    {
+      "id": 107,
+      "name": "Min Cell Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Lowest voltage among the reported battery cells."
+    },
+    {
+      "id": 108,
+      "name": "Avg Cell Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Mean voltage of the reported battery cells."
+    },
+    {
+      "id": 109,
+      "name": "Cell Voltage Difference",
+      "unit": "V",
+      "type": "number",
+      "description": "Difference between the highest and lowest reported cell voltages."
+    },
+    {
+      "id": 209,
+      "name": "Yearly Charge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Charge energy for the current calendar year, calculated by the EMS from the change in M104 relative to its period baseline. Period starts on January 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires annual aggregation support and a valid year-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 210,
+      "name": "Yearly Discharge Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Discharge energy for the current calendar year, calculated by the EMS from the change in M105 relative to its period baseline. Period starts on January 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires annual aggregation support and a valid year-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
     }
   ],
   "A": [
@@ -330,9 +346,14 @@
       "unit": "",
       "type": "enum",
       "enumData": [
-        { "key": "1", "label": "Start" }
+        {
+          "key": "1",
+          "label": "Start",
+          "value": "",
+          "description": "Request the device to start through its configured control route. Confirm the outcome using the Start Stop Status measurement."
+        }
       ],
-      "description": "Command for Start."
+      "description": "Request the battery system to start."
     },
     {
       "id": 2,
@@ -340,9 +361,14 @@
       "unit": "",
       "type": "enum",
       "enumData": [
-        { "key": "1", "label": "Stop" }
+        {
+          "key": "1",
+          "label": "Stop",
+          "value": "",
+          "description": "Request the device to stop through its configured control route. Confirm the outcome using the Start Stop Status measurement."
+        }
       ],
-      "description": "Command for Stop."
+      "description": "Request the battery system to stop."
     },
     {
       "id": 3,
@@ -350,9 +376,14 @@
       "unit": "",
       "type": "enum",
       "enumData": [
-        { "key": "1", "label": "Reset Fault" }
+        {
+          "key": "1",
+          "label": "Reset Fault",
+          "value": "",
+          "description": "Request a fault reset through the configured control route. Check the device fault or alarm feedback to confirm the outcome."
+        }
       ],
-      "description": "Command for Clear Error."
+      "description": "Request a fault reset on the battery system."
     }
   ]
 }

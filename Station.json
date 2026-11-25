@@ -1,64 +1,59 @@
 {
   "name": "Station",
+  "displayName": "Station",
   "type": "Station",
   "description": "Station profile with location, scenario settings, and station-level measurements.",
   "P": [
     {
       "id": 1,
-      "name": "Rated Capacity",
-      "unit": "",
-      "type": "string",
-      "description": "Configuration for Rated Capacity."
-    },
-    {
-      "id": 2,
       "name": "Longitude",
       "unit": "",
       "type": "string",
-      "description": "Configuration for Longitude."
+      "description": "Geographic longitude of the station location."
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "Latitude",
       "unit": "",
       "type": "string",
-      "description": "Configuration for Latitude."
+      "description": "Geographic latitude of the station location."
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "Altitude",
       "unit": "m",
       "type": "number",
-      "description": "Configuration for Altitude."
+      "description": "Altitude of the station location."
     },
     {
-      "id": 5,
-      "name": "Station Type",
-      "unit": "",
-      "type": "string",
-      "options": [
-        "residential",
-        "commercial",
-        "industrial",
-        "datacenter"
-      ],
-      "description": "Configuration for Station Type."
-    },
-    {
-      "id": 6,
+      "id": 4,
       "name": "Scenario Parameters",
       "unit": "",
       "type": "string",
-      "description": "Configuration for Scenario Parameters."
+      "description": "Configuration values associated with the station scenario."
     }
   ],
   "M": [
     {
       "id": 1,
-      "name": "Status",
+      "name": "Start Stop Status",
       "unit": "",
-      "type": "number",
-      "description": "Measurement for Status.",
+      "type": "enum",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Stopped",
+          "value": "",
+          "description": "The mapped business status reports the station as stopped. Determine individual equipment states from their own measurements."
+        },
+        {
+          "key": "2",
+          "label": "Running",
+          "value": "",
+          "description": "The mapped business status reports the station as running. Determine individual equipment output from their own measurements."
+        }
+      ],
+      "description": "Station business start or stop state. Map from an explicit business source; do not use as channel online state.",
       "attr": {
         "isDisplay": "true"
       }
@@ -67,8 +62,8 @@
       "id": 2,
       "name": "Saving Billing",
       "unit": "$",
-      "type": "string",
-      "description": "Measurement for Saving Billing.",
+      "type": "number",
+      "description": "Energy cost savings for the station in US dollars.",
       "attr": {
         "isDisplay": "true"
       }

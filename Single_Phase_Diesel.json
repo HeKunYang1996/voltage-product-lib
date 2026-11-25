@@ -1,0 +1,254 @@
+{
+  "name": "Single_Phase_Diesel",
+  "displayName": "Diesel Generator (Single Phase)",
+  "type": "Generator",
+  "description": "Single-phase diesel generator with AC output measurements, engine monitoring, and operating controls.",
+  "topology": {
+    "image": "device-Diesel.png",
+    "connections": [
+      {
+        "products": [
+          "Single_Phase_Meter",
+          "Three_Phase_Meter"
+        ],
+        "min": 1,
+        "max": 1
+      }
+    ],
+    "description": "One Meter connection is required."
+  },
+  "P": [
+    {
+      "id": 1,
+      "name": "Max Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Manufacturer-specified prime AC output power."
+    },
+    {
+      "id": 2,
+      "name": "Rated AC Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Rated AC voltage of the configured single-phase output. For 120/240 V split-phase wiring, record whether this value refers to line-to-neutral or line-to-line voltage."
+    },
+    {
+      "id": 3,
+      "name": "Rated AC Current",
+      "unit": "A",
+      "type": "number",
+      "description": "Rated output current for the configured single-phase voltage and wiring arrangement. For split-phase wiring, specify the applicable line rating."
+    },
+    {
+      "id": 4,
+      "name": "Fuel Tank Capacity",
+      "unit": "L",
+      "type": "number",
+      "description": "Fuel tank capacity specified for the generator."
+    },
+    {
+      "id": 5,
+      "name": "Rated Frequency",
+      "unit": "Hz",
+      "type": "number",
+      "description": "Rated frequency of the generator's AC output."
+    },
+    {
+      "id": 6,
+      "name": "Fuel Consumption Rate",
+      "unit": "L/kWh",
+      "type": "number",
+      "description": "Fuel consumed per unit of electrical energy generated at the specified reference load."
+    }
+  ],
+  "M": [
+    {
+      "id": 1,
+      "name": "Fuel Level",
+      "unit": "%",
+      "type": "number",
+      "description": "Fuel remaining as a percentage of tank capacity. Map only a percentage reading or a calibrated conversion.",
+      "attr": {
+        "isDisplay": "true"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Coolant Temperature",
+      "unit": "℃",
+      "type": "number",
+      "description": "Engine coolant temperature in degrees Celsius. Convert the source temperature unit when mapping."
+    },
+    {
+      "id": 3,
+      "name": "Start Stop Status",
+      "unit": "",
+      "type": "enum",
+      "description": "Reported engine running state: Stopped or Running.",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Stopped",
+          "value": "",
+          "description": "The mapped status source reports that the device is stopped. Read this state from a confirmed status signal."
+        },
+        {
+          "key": "2",
+          "label": "Running",
+          "value": "",
+          "description": "The mapped status source reports that the device is running. Check power measurements separately to determine its actual output."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Engine Load",
+      "unit": "%",
+      "type": "number",
+      "description": "Engine load percentage reported by the generator controller."
+    },
+    {
+      "id": 101,
+      "name": "AC Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Total AC active power across the configured generator output. Positive from the generator toward the AC system; negative for reverse power into the generator. Normalize the source sign when mapping. Include both legs when using split-phase wiring.",
+      "attr": {
+        "isDisplay": "true"
+      }
+    },
+    {
+      "id": 106,
+      "name": "AC Frequency",
+      "unit": "Hz",
+      "type": "number",
+      "description": "Frequency measured at the generator's AC output."
+    },
+    {
+      "id": 107,
+      "name": "AC Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Voltage at the configured single-phase output terminals. For split-phase wiring, specify whether the mapped voltage is line-to-neutral or line-to-line."
+    },
+    {
+      "id": 108,
+      "name": "AC Current",
+      "unit": "A",
+      "type": "number",
+      "description": "Current measured on the configured single-phase output line. For split-phase wiring, specify the measured leg; this value is not the sum of leg currents."
+    },
+    {
+      "id": 131,
+      "name": "AC Energy Total",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Cumulative AC energy generated at the generator output."
+    },
+    {
+      "id": 209,
+      "name": "AC Daily Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy generated during the current day, calculated by the EMS from the change in M131 relative to its period baseline. Period starts at local midnight. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "isDisplay": "true",
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 210,
+      "name": "AC Weekly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy generated during the current week, calculated by the EMS from the change in M131 relative to its period baseline. Period starts at the configured calendar-week boundary. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 211,
+      "name": "AC Monthly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy generated during the current month, calculated by the EMS from the change in M131 relative to its period baseline. Period starts on the first day of the calendar month. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 212,
+      "name": "AC Quarterly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy generated during the current quarter, calculated by the EMS from the change in M131 relative to its period baseline. Period starts on January 1, April 1, July 1, or October 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 213,
+      "name": "AC Yearly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "AC energy generated during the current calendar year, calculated by the EMS from the change in M131 relative to its period baseline. Period starts on January 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires annual aggregation support and a valid year-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    }
+  ],
+  "A": [
+    {
+      "id": 1,
+      "name": "Start",
+      "unit": "",
+      "type": "enum",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Start",
+          "value": "",
+          "description": "Request the device to start through its configured control route. Confirm the outcome using the Start Stop Status measurement."
+        }
+      ],
+      "description": "Request the diesel generator to start."
+    },
+    {
+      "id": 2,
+      "name": "Stop",
+      "unit": "",
+      "type": "enum",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Stop",
+          "value": "",
+          "description": "Request the device to stop through its configured control route. Confirm the outcome using the Start Stop Status measurement."
+        }
+      ],
+      "description": "Request the diesel generator to stop."
+    },
+    {
+      "id": 3,
+      "name": "Power Set",
+      "unit": "kW",
+      "type": "number",
+      "description": "Request a power setpoint for the generator electrical output."
+    },
+    {
+      "id": 4,
+      "name": "Clear Error",
+      "unit": "",
+      "type": "enum",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Reset Fault",
+          "value": "",
+          "description": "Request a fault reset through the configured control route. Check the device fault or alarm feedback to confirm the outcome."
+        }
+      ],
+      "description": "Request a fault reset on the diesel generator."
+    }
+  ]
+}
