@@ -1,0 +1,218 @@
+{
+  "name": "Single_Phase_AC_Inverter",
+  "displayName": "AC Inverter (Single Phase)",
+  "type": "Inverter",
+  "description": "Single-phase PV inverter with a DC input and AC conversion output.",
+  "topology": {
+    "image": "device-ACInverter.png",
+    "connections": [
+      {
+        "products": [
+          "PV_Group"
+        ],
+        "min": 0,
+        "max": null
+      },
+      {
+        "products": [
+          "Single_Phase_Meter",
+          "Three_Phase_Meter"
+        ],
+        "min": 1,
+        "max": 1
+      }
+    ],
+    "description": "One Meter connection is required. PV Group connections are optional and remain subject to peer rules."
+  },
+  "P": [
+    {
+      "id": 1,
+      "name": "Max Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Rated continuous AC active power of the inverter conversion output."
+    },
+    {
+      "id": 2,
+      "name": "Rated AC Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Rated AC voltage for the installed single-phase or split-phase wiring. Record whether the specified value is line-to-neutral or line-to-line."
+    },
+    {
+      "id": 3,
+      "name": "Rated Frequency",
+      "unit": "Hz",
+      "type": "number",
+      "description": "Rated AC output frequency."
+    },
+    {
+      "id": 4,
+      "name": "Max PV Input Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Maximum usable DC power across all PV inputs."
+    },
+    {
+      "id": 5,
+      "name": "Max PV Input Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Maximum permitted DC voltage at each PV input."
+    }
+  ],
+  "M": [
+    {
+      "id": 1,
+      "name": "Heat Sink Temperature",
+      "unit": "℃",
+      "type": "number",
+      "description": "IGBT heat sink temperature reported by the inverter."
+    },
+    {
+      "id": 2,
+      "name": "Start Stop Status",
+      "unit": "",
+      "type": "enum",
+      "description": "Reported operating state of the AC inverter: Stopped or Running. Map only when a confirmed read source exists; do not infer from power.",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Stopped",
+          "value": "",
+          "description": "The mapped status source reports that the device is stopped. Read this state from a confirmed status signal."
+        },
+        {
+          "key": "2",
+          "label": "Running",
+          "value": "",
+          "description": "The mapped status source reports that the device is running. Check power measurements separately to determine its actual output."
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "name": "AC Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Net active power at the inverter AC conversion connection. Positive from the device toward the AC system; negative from the AC system into the device. Normalize the source sign when mapping.",
+      "attr": {
+        "isDisplay": "true"
+      }
+    },
+    {
+      "id": 102,
+      "name": "DC Input Power",
+      "unit": "kW",
+      "type": "number",
+      "description": "Total DC power received from all active PV inputs. Sum only the inputs applicable to the installed model.",
+      "attr": {
+        "isDisplay": "true"
+      }
+    },
+    {
+      "id": 103,
+      "name": "AC Frequency",
+      "unit": "Hz",
+      "type": "number",
+      "description": "Frequency at the inverter conversion AC output."
+    },
+    {
+      "id": 104,
+      "name": "PV Energy Total",
+      "unit": "kWh",
+      "type": "number",
+      "description": "Cumulative DC energy received from the PV inputs."
+    },
+    {
+      "id": 209,
+      "name": "PV Daily Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "PV DC input energy for the current day, calculated by the EMS from the change in M104 relative to its period baseline. Period starts at local midnight. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "isDisplay": "true",
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 210,
+      "name": "PV Weekly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "PV DC input energy for the current week, calculated by the EMS from the change in M104 relative to its period baseline. Period starts at the configured calendar-week boundary. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 211,
+      "name": "PV Monthly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "PV DC input energy for the current month, calculated by the EMS from the change in M104 relative to its period baseline. Period starts on the first day of the calendar month. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 212,
+      "name": "PV Quarterly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "PV DC input energy for the current quarter, calculated by the EMS from the change in M104 relative to its period baseline. Period starts on January 1, April 1, July 1, or October 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires a configured EMS period rule and a valid period-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    },
+    {
+      "id": 213,
+      "name": "PV Yearly Energy",
+      "unit": "kWh",
+      "type": "number",
+      "description": "PV DC input energy for the current calendar year, calculated by the EMS from the change in M104 relative to its period baseline. Period starts on January 1. Use the configured reporting time zone and the cumulative source unit (kWh). Requires annual aggregation support and a valid year-start baseline. If the baseline is missing or the source counter resets, keep the result unavailable until a valid baseline is established.",
+      "attr": {
+        "monitorVisible": "false"
+      }
+    }
+  ],
+  "A": [
+    {
+      "id": 1,
+      "name": "Start",
+      "unit": "",
+      "type": "enum",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Start",
+          "value": "",
+          "description": "Request the device to start through its configured control route. Confirm the outcome using the Start Stop Status measurement."
+        }
+      ],
+      "description": "Request the AC inverter to start. Requires a verified writable interface for the installed model and firmware."
+    },
+    {
+      "id": 2,
+      "name": "Stop",
+      "unit": "",
+      "type": "enum",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Stop",
+          "value": "",
+          "description": "Request the device to stop through its configured control route. Confirm the outcome using the Start Stop Status measurement."
+        }
+      ],
+      "description": "Request the AC inverter to stop. Requires a verified writable interface for the installed model and firmware."
+    },
+    {
+      "id": 3,
+      "name": "Power Set",
+      "unit": "kW",
+      "type": "number",
+      "description": "Request an AC active power target at the inverter conversion output. Requires a verified writable interface supporting this target for the installed model and firmware. Convert the command to the device sign convention in the action route."
+    }
+  ]
+}
