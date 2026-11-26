@@ -1,7 +1,7 @@
 {
   "name": "PV_Group",
   "displayName": "PV Group",
-  "type": "PV_Group",
+  "type": "PV",
   "description": "PV DC generation group connected to an inverter PV input for off-grid power and energy monitoring.",
   "topology": {
     "image": "device-PVGroup.png",
@@ -37,27 +37,6 @@
   ],
   "M": [
     {
-      "id": 1,
-      "name": "Start Stop Status",
-      "unit": "",
-      "type": "enum",
-      "description": "Reported operating state of the PV group boundary: Stopped or Running. Map only when a confirmed read source exists; do not infer component physical start or stop.",
-      "enumData": [
-        {
-          "key": "1",
-          "label": "Stopped",
-          "value": "",
-          "description": "An explicit mapped status source reports this PV group as stopped. Use that source to interpret the state independently of instantaneous generation."
-        },
-        {
-          "key": "2",
-          "label": "Running",
-          "value": "",
-          "description": "An explicit mapped status source reports this PV group as running. Check DC Power separately for its actual generation."
-        }
-      ]
-    },
-    {
       "id": 101,
       "name": "DC Power",
       "unit": "kW",
@@ -76,6 +55,20 @@
       "attr": {
         "isDisplay": "true"
       }
+    },
+    {
+      "id": 103,
+      "name": "DC Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "DC voltage for the configured PV measurement boundary, supplied by a mapped MPPT input or a configured EMS rule. Record the input and calculation method. Do not sum voltages across independent MPPT inputs."
+    },
+    {
+      "id": 104,
+      "name": "DC Current",
+      "unit": "A",
+      "type": "number",
+      "description": "DC current for the configured PV measurement boundary, supplied by a mapped MPPT input or a configured EMS rule. Record the input, current direction, and calculation method. Sum currents only for confirmed parallel inputs sharing the same voltage boundary; do not directly sum independent MPPT input currents."
     },
     {
       "id": 201,
