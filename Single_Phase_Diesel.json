@@ -1,7 +1,7 @@
 {
   "name": "Single_Phase_Diesel",
   "displayName": "Diesel Generator (Single Phase)",
-  "type": "Generator",
+  "type": "Diesel",
   "description": "Single-phase diesel generator with AC output measurements, engine monitoring, and operating controls.",
   "topology": {
     "image": "device-Diesel.png",

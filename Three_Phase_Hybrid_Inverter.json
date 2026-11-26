@@ -1,7 +1,7 @@
 {
   "name": "Three_Phase_Hybrid_Inverter",
   "displayName": "Hybrid Inverter (Three Phase)",
-  "type": "Inverter",
+  "type": "Hybrid_Inverter",
   "description": "Three-phase off-grid hybrid inverter with PV DC input, bidirectional battery DC power, and AC supply to loads.",
   "topology": {
     "image": "device-HybridInverter.png",

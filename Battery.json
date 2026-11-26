@@ -1,7 +1,7 @@
 {
   "name": "Battery",
   "displayName": "Battery",
-  "type": "ESS",
+  "type": "Battery",
   "description": "Battery energy storage device with capacity, operating limits, and runtime measurements.",
   "topology": {
     "image": "device-Battery.png",

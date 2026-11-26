@@ -1,7 +1,7 @@
 {
   "name": "PV_Group",
   "displayName": "PV Group",
-  "type": "Generator",
+  "type": "PV_Group",
   "description": "PV DC generation group connected to an inverter PV input for off-grid power and energy monitoring.",
   "topology": {
     "image": "device-PVGroup.png",
