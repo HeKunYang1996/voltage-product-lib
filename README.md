@@ -14,11 +14,12 @@
 | AC_Inverter | 光伏逆变器 | Single_Phase_AC_Inverter、Three_Phase_AC_Inverter |
 | Hybrid_Inverter | 混合逆变器 | Single_Phase_Hybrid_Inverter、Three_Phase_Hybrid_Inverter |
 | Diesel | 柴油发电机 | Single_Phase_Diesel、Three_Phase_Diesel |
-| PV_Group | 光伏组 | PV_Group |
+| PV | 光伏组 | PV_Group |
 | Meter | 电表 | Single_Phase_Meter、Three_Phase_Meter |
 | Load | 负载 | Single_Phase_Load、Three_Phase_Load |
 
 `type` 表示具体设备类型，用于产品分组和类型识别。单相、三相版本共用类型，相制由具体产品标识及定义区分。类型标识沿用英文，中文含义见上表。产品顶层的 `type` 与 P/M/A 点位的值类型 `type` 是不同层级的字段。
+`PV_Group` 的 `type` 和 `displayName` 均为 `PV`；稳定产品标识 `name`、文件名 `PV_Group.json` 和拓扑引用继续使用 `PV_Group`。
 分类值不要求存在同名产品文件。此前 Battery/PCS 共用的 ESS、Diesel/PV_Group 共用的 Generator、两类逆变器共用的 Inverter 已细化为上表类型。分类占位产品及 Distribution_Board 仍保持移除。
 产品级连线继续按具体产品 name 校验，类型不定义连接端口或功率方向。接入或消费端若按旧分类值分支，应按此分类表同步核对。
 Single_Phase_Meter 和 Three_Phase_Meter 分别用于单相、三相 AC 计量，共用整机功率、频率、功率因数及双向累计电量名称；按现场实际接线选择产品。两者均无控制动作。
@@ -43,6 +44,8 @@ Single_Phase_AC_Inverter、Three_Phase_AC_Inverter 和 Three_Phase_PCS、Single_
 | 负载 | Single_Phase_Load | Three_Phase_Load |
 
 Battery、PV_Group 定义 DC 侧测量；Env、Station 定义环境和站点信息，这四类保留各自通用产品。
+
+PV_Group 新增 M103 DC Voltage（V）、M104 DC Current（A），可由对应 MPPT 输入映射或规则链生成。实例应记录输入来源、测量边界和计算方法；不同 MPPT 的电压不可相加，电流仅在确认同电压边界并联关系后才可求和，不直接合并独立 MPPT 电流。未配置有效来源或规则时保持缺失值。M101 DC Power、M102 PV Energy Total 及 M201–M205 周期电量的 ID 和累计源保持不变；新增两点不增加默认重点展示标记。PV 不保留 Start Stop Status（原 M1）：当前 Sol-Ark SQL/只读协议没有独立 PV 启停状态，零功率不能直接解释为停机。剩余点位 ID 保持不变。
 
 ### 当前交流模板核对表（2026-11-25）
 
@@ -80,7 +83,7 @@ AC Inverter、PCS、Hybrid 当前采用整机重点测量，单相与三相模�
 
 点位使用 `id/name/unit/type`，并可附带 `description` 等元数据。点位类型支持 `number`、`string` 和 `enum`。
 每个产品的 P、M、A 点表独立编号，表内 ID 唯一，通常按数值升序排列；Battery 将当前现场未映射的测点按原 ID 放到 M 数组末尾。基础点从 1 开始，当前整理的通用 AC Inverter、PCS、Hybrid 各段内顺序编号；周期固定段及其他产品现有空档按各自 JSON 保留，不为跨产品对齐而新增占位点。M1–M100 放置状态、温度等基础点；M101–M200 放置 AC/DC 电气测量和累计电量；M201–M300 放置周期电量与周期最大需量。同含义测点统一名称、业务单位和计量口径，各产品按自身点表独立编号，不要求跨产品 ID 相同；同一产品的点位名称须唯一。Battery 的日、周、月、季度充放电量使用 M201–M208。空点表保持为空。已有实例升级到重新编号的点表时，按变更记录迁移点位引用。协议地址在接入层维护。
-默认展示信息直接放在测点上：需要展示的 M 点位增加 `"attr": { "isDisplay": "true" }`，未配置或值不为 `"true"` 的点位不默认展示。展示顺序遵循 M 数组顺序；如果以后需要独立排序，可在 `attr` 中增加排序元数据。每个产品标记 2–3 个关键 M 点位。离网设备主要展示功率、电量或设备特有的关键测量，Station 展示现有两个测点。可启停类设备在 M1–M100 段提供 **Start Stop Status**（Stopped/Running）；**Meter** 与 **Load** 无 **A** 控制、也无启停 **M** 点。设备类模板默认不突出展示启停状态（`Start Stop Status`）；Station 是业务站点状态展示的例外，保留 M1 的默认重点标记，含义以显式业务状态源为准。已移除 **Grid Status**。
+默认展示信息直接放在测点上：需要展示的 M 点位增加 `"attr": { "isDisplay": "true" }`，未配置或值不为 `"true"` 的点位不默认展示。展示顺序遵循 M 数组顺序；如果以后需要独立排序，可在 `attr` 中增加排序元数据。每个产品标记 2–3 个关键 M 点位。离网设备主要展示功率、电量或设备特有的关键测量，Station 展示现有两个测点。可启停类设备在 M1–M100 段提供 **Start Stop Status**（Stopped/Running）；**PV_Group**、**Meter** 与 **Load** 无 **A** 控制、也无启停 **M** 点。设备类模板默认不突出展示启停状态（`Start Stop Status`）；Station 是业务站点状态展示的例外，保留 M1 的默认重点标记，含义以显式业务状态源为准。已移除 **Grid Status**。
 展示时过滤未映射或不可用点位，不以零值代替缺失值。
 监控可见性优先于默认重点展示：`attr.monitorVisible === "false"` 的测点不进入监控卡片、默认重点卡片或监控展示分组；`isDisplay` 保留其原有默认重点展示含义。日、周、月、季度、本年度电量均标记为监控隐藏，点位定义、规则计算、历史查询和统计用途保留。未配置 `monitorVisible` 的测点默认可见。消费端需读取并应用此字段后才会改变页面效果。
 三相测点保留 L1/L2/L3 名称，仅通过 `attr.displayGroup` 标记共同展示关系；组内顺序遵循 M 数组中的 L1、L2、L3 顺序。该字段只描述展示分组，不计算合计、不改变点位值，也不替代默认展示标记。
@@ -356,3 +359,9 @@ Basler 手册提供远程启停和报警复位接口，当前 SQL 尚无控制/�
 ## 产品业务单位与 SQL 采集单位（2026-11-25）
 
 产品库统一采用业务单位：有功功率 kW、无功功率 kvar、电量 kWh、温度 ℃，电表与负载沿用同一口径。SQL 保留设备采集工程单位及已有 scale/offset；接入映射负责将其转换为产品单位。例如 W/var/Wh 除以 1000，华氏温度按 (F − 32) × 5/9 换算。摄氏温度 degC 与 ℃ 物理单位相同，无需数值缩放。周期差量继承业务累计源的单位，不重复换算。P、M、A 各自按其定义确认输入输出单位，控制下发需要按可写协议反向换算。具体来源、转换和待确认项见 [SQL 采集单位核对](SQL_Unit_Verification.md)。
+
+### Sol-Ark PV 输入采集范围
+
+当前 init_site_devices.sql 的 channel 1 已配置 PV1/PV2 电压、电流和输入功率读点：地址分别为 109/110/186、111/112/187。电压、电流由 SQL 按 0.1 转为 V/A，功率源为 W，映射到 PV 的 DC Power 时转换为 kW。PV3 的 113/114/188 在当前 SQL 和对应 V1.5 协议中注明仅适用于 15K，不能据这些定义认定 18K 支持第三路读取。
+
+以上是逆变器协议的 PV 输入采集定义，没有在产品库中新增独立 MPPT 产品，也不证明运行实例已完成映射或现场通信。具体 PV 输入与物理 MPPT、组串的对应关系须按型号和接线确认；可将对应输入读数映射到 PV 的 DC Voltage/DC Current/DC Power 或配置规则计算。

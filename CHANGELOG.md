@@ -6,6 +6,21 @@ Current contract: product power uses kW/kvar, energy and all period deltas use k
 
 ## 2026-11-26
 
+### Remove unsupported PV start/stop status
+
+- Removed PV_Group M1 Start Stop Status because the current Sol-Ark SQL and supplied read-only map expose no explicit PV start/stop state. Zero PV power must not be treated as a confirmed stop state.
+- Preserved all remaining point IDs, units, period sources, display flags and topology. Updated README with the PV1/PV2 input addresses and the PV3 15K-only restriction from the supplied map; no independent MPPT product or runtime route was added.
+
+### Add PV DC voltage and current measurements
+
+- Added PV_Group M103 DC Voltage (V) and M104 DC Current (A), supplied by an explicitly mapped MPPT input or configured EMS rule. Documented input boundaries and limits on combining independent MPPT readings.
+- Preserved existing point IDs, cumulative/period sources, display metadata, product identity and topology. New points have no default-display markers. Updated README; no runtime rules, routes or consumer code were changed.
+
+### Use PV as the type and display name
+
+- Changed PV_Group type and displayName to PV. Supersedes the PV_Group type introduced in the classification refinement below.
+- Kept name PV_Group, filename PV_Group.json, topology references, and all point definitions unchanged. Updated README to distinguish the type/display label from the stable product identifier.
+
 ### Refine product types by device function
 
 - Replaced broad classifications for ten products: Battery uses Battery, both PCS variants use PCS, both PV inverter variants use AC_Inverter, both hybrid variants use Hybrid_Inverter, both diesel variants use Diesel, and PV_Group uses PV_Group.
