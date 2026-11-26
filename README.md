@@ -5,18 +5,22 @@
 
 ## 产品分类
 
-| type | 产品 |
-| --- | --- |
-| Station | Station |
-| Environment | Env |
-| ESS | Battery、Three_Phase_PCS、Single_Phase_PCS |
-| Generator | Single_Phase_Diesel、Three_Phase_Diesel、PV_Group |
-| Inverter | Single_Phase_AC_Inverter、Three_Phase_AC_Inverter、Single_Phase_Hybrid_Inverter、Three_Phase_Hybrid_Inverter |
-| Meter | Single_Phase_Meter、Three_Phase_Meter |
-| Load | Single_Phase_Load、Three_Phase_Load |
+| type | 设备含义 | 产品 |
+| --- | --- | --- |
+| Station | 站点 | Station |
+| Environment | 环境监测 | Env |
+| Battery | 电池 | Battery |
+| PCS | 储能变流器 | Single_Phase_PCS、Three_Phase_PCS |
+| AC_Inverter | 光伏逆变器 | Single_Phase_AC_Inverter、Three_Phase_AC_Inverter |
+| Hybrid_Inverter | 混合逆变器 | Single_Phase_Hybrid_Inverter、Three_Phase_Hybrid_Inverter |
+| Diesel | 柴油发电机 | Single_Phase_Diesel、Three_Phase_Diesel |
+| PV_Group | 光伏组 | PV_Group |
+| Meter | 电表 | Single_Phase_Meter、Three_Phase_Meter |
+| Load | 负载 | Single_Phase_Load、Three_Phase_Load |
 
-`type` 只用于产品分组和云端分路分类，不是父设备、连接端口或功率方向。
-分类值不要求存在同名产品文件。ESS、Load、Generator、Inverter 分类占位产品及 Distribution_Board 已移除。
+`type` 表示具体设备类型，用于产品分组和类型识别。单相、三相版本共用类型，相制由具体产品标识及定义区分。类型标识沿用英文，中文含义见上表。产品顶层的 `type` 与 P/M/A 点位的值类型 `type` 是不同层级的字段。
+分类值不要求存在同名产品文件。此前 Battery/PCS 共用的 ESS、Diesel/PV_Group 共用的 Generator、两类逆变器共用的 Inverter 已细化为上表类型。分类占位产品及 Distribution_Board 仍保持移除。
+产品级连线继续按具体产品 name 校验，类型不定义连接端口或功率方向。接入或消费端若按旧分类值分支，应按此分类表同步核对。
 Single_Phase_Meter 和 Three_Phase_Meter 分别用于单相、三相 AC 计量，共用整机功率、频率、功率因数及双向累计电量名称；按现场实际接线选择产品。两者均无控制动作。
 Single_Phase_AC_Inverter、Three_Phase_AC_Inverter 和 Three_Phase_PCS、Single_Phase_PCS 仍用于独立设备；Single_Phase_Hybrid_Inverter、Three_Phase_Hybrid_Inverter 以一个实例表达两类功能。
 
@@ -63,7 +67,7 @@ AC Inverter、PCS、Hybrid 当前采用整机重点测量，单相与三相模�
 | --- | --- |
 | name | 稳定产品标识，实例及连接规则按此字段关联 |
 | displayName | 界面展示名称；一般由 `name` 去掉下划线得到，不改动 `name` 本身 |
-| type | 分类 |
+| type | 具体设备类型，单相/三相版本共用 |
 | description | 产品说明 |
 | topology | 可选；仅参与拓扑绘制的产品定义此对象 |
 | topology.image | 可选图片资源标识 |
@@ -218,7 +222,7 @@ Meter 关联表示业务拓扑，不表示把计量设备当作配电箱的实�
 
 ## 产品说明示例：Three_Phase_Diesel（三相柴发）
 
-以下以当前仓库中的 `Three_Phase_Diesel.json` 为准，说明 P/M/A 分层、拓扑、默认展示与接入习惯。实例文件名为稳定标识 **Three_Phase_Diesel**；界面展示名为 **Diesel Generator (Three Phase)**；分类 **type** 为 `Generator`。旧产品名 **Diesel** 升级时需按 `CHANGELOG.md` 中的 ID 映射整体迁移，不能只改 `product_name`。
+以下以当前仓库中的 `Three_Phase_Diesel.json` 为准，说明 P/M/A 分层、拓扑、默认展示与接入习惯。实例文件名为稳定标识 **Three_Phase_Diesel**；界面展示名为 **Diesel Generator (Three Phase)**；分类 **type** 为 `Diesel`。旧产品名 **Diesel** 升级时需按 `CHANGELOG.md` 中的 ID 映射整体迁移，不能只改 `product_name`。
 
 ### 拓扑与计量
 

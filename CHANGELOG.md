@@ -4,6 +4,15 @@ Version identifiers use the release date in `YYYY-MM-DD` format. New entries are
 
 Current contract: product power uses kW/kvar, energy and all period deltas use kWh, and temperature uses ℃. SQL units are converted in instance mappings. Periods are current calendar periods in the configured reporting time zone, with valid cumulative-source baselines; yearly calculation remains pending. PCS/Hybrid AC power is input-positive and battery power/current is charge-positive. Entries below record version-specific history; superseded entries and old ID tables are migration evidence, not current configuration. Current JSON and README define the active contract.
 
+## 2026-11-26
+
+### Refine product types by device function
+
+- Replaced broad classifications for ten products: Battery uses Battery, both PCS variants use PCS, both PV inverter variants use AC_Inverter, both hybrid variants use Hybrid_Inverter, both diesel variants use Diesel, and PV_Group uses PV_Group.
+- Single-phase and three-phase products share the same functional type. Station, Environment, Meter and Load remain unchanged. Supersedes earlier ESS/Generator/Inverter grouping descriptions.
+- Updated README with the ten concrete types, Chinese meanings and the Diesel example. Product names, point definitions, units, IDs, display flags and topology are unchanged. Consumer code and runtime configurations were not changed.
+- Removed **Diesel_Source_Verification.md** and **SQL_Unit_Verification.md**; current unit mapping, period rules and diesel source notes live in README and the CHANGELOG contract header above.
+
 ## 2026-11-25
 
 ### Whole-library units and period-energy consistency audit

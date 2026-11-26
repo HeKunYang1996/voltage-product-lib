@@ -1,7 +1,7 @@
 {
   "name": "Single_Phase_PCS",
   "displayName": "PCS (Single Phase)",
-  "type": "ESS",
+  "type": "PCS",
   "description": "Single-phase bidirectional power conversion system connecting an AC system and a DC battery system.",
   "topology": {
     "image": "device-PCS.png",

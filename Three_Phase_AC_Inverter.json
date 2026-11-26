@@ -1,7 +1,7 @@
 {
   "name": "Three_Phase_AC_Inverter",
   "displayName": "AC Inverter (Three Phase)",
-  "type": "Inverter",
+  "type": "AC_Inverter",
   "description": "Three-phase PV inverter with a DC input and AC conversion output.",
   "topology": {
     "image": "device-ACInverter.png",

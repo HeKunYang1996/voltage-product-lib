@@ -1,7 +1,7 @@
 {
   "name": "Three_Phase_Diesel",
   "displayName": "Diesel Generator (Three Phase)",
-  "type": "Generator",
+  "type": "Diesel",
   "description": "Three-phase diesel generator with AC output measurements, engine monitoring, and operating controls.",
   "topology": {
     "image": "device-Diesel.png",

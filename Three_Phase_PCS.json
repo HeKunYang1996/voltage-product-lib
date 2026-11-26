@@ -1,7 +1,7 @@
 {
   "name": "Three_Phase_PCS",
   "displayName": "PCS (Three Phase)",
-  "type": "ESS",
+  "type": "PCS",
   "description": "Three-phase bidirectional power conversion system connecting an AC system and a DC battery system.",
   "topology": {
     "image": "device-PCS.png",
