@@ -96,6 +96,82 @@
       "description": "Average battery temperature reported by the BMS for the battery system."
     },
     {
+      "id": 6,
+      "name": "Max Battery Pack Temperature",
+      "unit": "℃",
+      "type": "number",
+      "description": "Highest temperature among the reported battery pack temperatures."
+    },
+    {
+      "id": 7,
+      "name": "Min Battery Pack Temperature",
+      "unit": "℃",
+      "type": "number",
+      "description": "Lowest temperature among the reported battery pack temperatures."
+    },
+    {
+      "id": 8,
+      "name": "Charge Discharge Status",
+      "unit": "",
+      "type": "enum",
+      "description": "Reported battery state: Idle, Charging, or Discharging.",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Idle",
+          "value": "",
+          "description": "The mapped battery status source reports an idle state with no active charging or discharging."
+        },
+        {
+          "key": "2",
+          "label": "Charging",
+          "value": "",
+          "description": "The mapped battery status source reports charging, with energy flowing into the battery."
+        },
+        {
+          "key": "3",
+          "label": "Discharging",
+          "value": "",
+          "description": "The mapped battery status source reports discharging, with energy flowing out of the battery."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Avg Cell Temperature",
+      "unit": "℃",
+      "type": "number",
+      "description": "Mean of the reported battery cell temperatures."
+    },
+    {
+      "id": 10,
+      "name": "Online Battery Pack Count",
+      "unit": "",
+      "type": "number",
+      "description": "Number of battery packs reported online."
+    },
+    {
+      "id": 11,
+      "name": "Start Stop Status",
+      "unit": "",
+      "type": "enum",
+      "description": "Reported operating state of the battery system: Stopped or Running. Map only when a confirmed read source exists; do not infer from current or power.",
+      "enumData": [
+        {
+          "key": "1",
+          "label": "Stopped",
+          "value": "",
+          "description": "The mapped status source reports that the device is stopped. Read this state from a confirmed status signal."
+        },
+        {
+          "key": "2",
+          "label": "Running",
+          "value": "",
+          "description": "The mapped status source reports that the device is running. Check power measurements separately to determine its actual output."
+        }
+      ]
+    },
+    {
       "id": 101,
       "name": "Battery Voltage",
       "unit": "V",
@@ -132,6 +208,34 @@
       "unit": "kWh",
       "type": "number",
       "description": "Cumulative energy discharged from the battery. This counter is the input for periodic discharge-energy calculations."
+    },
+    {
+      "id": 106,
+      "name": "Max Cell Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Highest voltage among the reported battery cells."
+    },
+    {
+      "id": 107,
+      "name": "Min Cell Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Lowest voltage among the reported battery cells."
+    },
+    {
+      "id": 108,
+      "name": "Avg Cell Voltage",
+      "unit": "V",
+      "type": "number",
+      "description": "Mean voltage of the reported battery cells."
+    },
+    {
+      "id": 109,
+      "name": "Cell Voltage Difference",
+      "unit": "V",
+      "type": "number",
+      "description": "Difference between the highest and lowest reported cell voltages."
     },
     {
       "id": 201,
@@ -213,110 +317,6 @@
       "attr": {
         "monitorVisible": "false"
       }
-    },
-    {
-      "id": 6,
-      "name": "Max Battery Pack Temperature",
-      "unit": "℃",
-      "type": "number",
-      "description": "Highest temperature among the reported battery pack temperatures."
-    },
-    {
-      "id": 7,
-      "name": "Min Battery Pack Temperature",
-      "unit": "℃",
-      "type": "number",
-      "description": "Lowest temperature among the reported battery pack temperatures."
-    },
-    {
-      "id": 8,
-      "name": "Charge Discharge Status",
-      "unit": "",
-      "type": "enum",
-      "description": "Reported battery state: Idle, Charging, or Discharging.",
-      "enumData": [
-        {
-          "key": "1",
-          "label": "Idle",
-          "value": "",
-          "description": "The mapped battery status source reports an idle state with no active charging or discharging."
-        },
-        {
-          "key": "2",
-          "label": "Charging",
-          "value": "",
-          "description": "The mapped battery status source reports charging, with energy flowing into the battery."
-        },
-        {
-          "key": "3",
-          "label": "Discharging",
-          "value": "",
-          "description": "The mapped battery status source reports discharging, with energy flowing out of the battery."
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "name": "Avg Cell Temperature",
-      "unit": "℃",
-      "type": "number",
-      "description": "Mean of the reported battery cell temperatures."
-    },
-    {
-      "id": 10,
-      "name": "Online Battery Pack Count",
-      "unit": "",
-      "type": "number",
-      "description": "Number of battery packs reported online."
-    },
-    {
-      "id": 11,
-      "name": "Start Stop Status",
-      "unit": "",
-      "type": "enum",
-      "description": "Reported operating state of the battery system: Stopped or Running. Map only when a confirmed read source exists; do not infer from current or power.",
-      "enumData": [
-        {
-          "key": "1",
-          "label": "Stopped",
-          "value": "",
-          "description": "The mapped status source reports that the device is stopped. Read this state from a confirmed status signal."
-        },
-        {
-          "key": "2",
-          "label": "Running",
-          "value": "",
-          "description": "The mapped status source reports that the device is running. Check power measurements separately to determine its actual output."
-        }
-      ]
-    },
-    {
-      "id": 106,
-      "name": "Max Cell Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Highest voltage among the reported battery cells."
-    },
-    {
-      "id": 107,
-      "name": "Min Cell Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Lowest voltage among the reported battery cells."
-    },
-    {
-      "id": 108,
-      "name": "Avg Cell Voltage",
-      "unit": "V",
-      "type": "number",
-      "description": "Mean voltage of the reported battery cells."
-    },
-    {
-      "id": 109,
-      "name": "Cell Voltage Difference",
-      "unit": "V",
-      "type": "number",
-      "description": "Difference between the highest and lowest reported cell voltages."
     },
     {
       "id": 209,
